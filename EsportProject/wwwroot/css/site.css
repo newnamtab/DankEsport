@@ -1,39 +1,70 @@
 ﻿body {
-    font-family: Calibri, serif, 'Times New Roman';
-    background-color:lightgrey;
+    margin: 0;
+    padding: 0;
+    font-family: Calibri, serif;
+    background-color: lightgrey;
+}
+
+.nav {
+    background-color: #595959;
+    color: floralwhite;
+    list-style: none;
+    text-align: center;
+    padding: 20px 0 20px 0;
+}
+
+.nav > li { /*Dette gør at vi kun rammer li som ligger inde i en nav*/
+    display:inline-block; /*Det vender links vertikalt, så de er på række*/
+    padding-right: 0 25px 0 25px; /*top - left - bot - right*/
+}
+
+.nav > li > a {
+    text-decoration: none;
+    color: white;
+    font-size: x-large;
+}
+.nav > li > a:hover {
+    color: black;
+    background-color: #595959;
 }
 #row1 {
-    padding-top:5px;
+    padding-top: 5px;
 }
+
 #fronttable {
     border: solid;
-    background-color:white;
+    background-color: white;
 }
 
 #frontth {
-    text-align:center;
+    text-align: center;
 }
+
 #fronttable th {
     background-color: black;
     color: white;
     text-align: center;
 }
+
 #frontnewsheader {
-    text-align:center;
-    padding-bottom:15px;
+    text-align: center;
+    padding-bottom: 15px;
 }
+
 footer {
-    color:antiquewhite;
-    background-color:black;
+    color: antiquewhite;
+    background-color: black;
     text-align: center;
 }
+
 .spacer {
-    margin-left:50px;
+    margin-left: 50px;
 }
+
 #contactform {
-    background-color:aquamarine;
-    padding-left:5px;
-    padding-top:5px;
-    padding-bottom:5px;
-    border:dashed;
+    background-color: aquamarine;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: dashed;
 }

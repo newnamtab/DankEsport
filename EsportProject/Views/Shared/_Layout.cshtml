@@ -23,7 +23,15 @@
         <img src="~/images/PLACEHOLDER.jpg" alt="Visual Studio" class="img-responsive" />
     </div>
 
-    <div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav">
+        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+        <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
+        <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
+        <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
+        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+    </ul>
+
+    @*<div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
             <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
             <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
@@ -31,7 +39,7 @@
             <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
             <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
         </ul>
-    </div>
+    </div>*@
             
     <div class="container">
         @RenderBody()
