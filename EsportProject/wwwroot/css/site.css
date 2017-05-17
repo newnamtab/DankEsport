@@ -1,0 +1,35 @@
+﻿#navbar {
+    background-color:black;
+}
+body {
+    font-family: Calibri, serif, 'Times New Roman';
+    background-color:lightgrey;
+}
+#row1 {
+    padding-top:5px;
+}
+#fronttable {
+    border: solid;
+    background-color:white;
+}
+
+#frontth {
+    text-align:center;
+}
+#fronttable th {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+#frontnewsheader {
+    text-align:center;
+    padding-bottom:15px;
+}
+footer {
+    color:antiquewhite;
+    background-color:black;
+    text-align: center;
+}
+.spacer {
+    margin-left:50px;
+}
