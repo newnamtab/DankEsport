@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Content Include="wwwroot\images\background.jpg" />
+    <Content Include="wwwroot\images\DANKRANK.png" />
     <Content Include="wwwroot\images\dropdownicon.png" />
     <Content Include="wwwroot\images\navicon.png" />
     <Content Include="wwwroot\images\Placehold.jpg" />

@@ -29,10 +29,11 @@
     color: black;
     background-color: #336350;
 }
-
-#navimg {
-    height: 35px;
+#navlogo {
+    height:50px;
+    padding-bottom:15px;
 }
+
 
 /* nedenstående kun gældende på mobil*/
 @media screen and (max-width: 480px) {
@@ -44,7 +45,6 @@
         background-color: #336350;
         cursor: pointer;
     }
-
     header nav ul {
         overflow: hidden;
         background-color: #505050;
@@ -71,7 +71,10 @@
        margin:0;
      }
     .nav {
-    height:0;
+    padding: 0 0 0 0;
+    }
+    #navlogo {
+        display:none;
     }
 }
 /*ovenstående kun gældende på mobil*/
@@ -80,7 +83,7 @@
 }
 
 #fronttable {
-    border: solid:
+    border: solid;
     background-color: white;
 }
 
