@@ -6,36 +6,81 @@
 }
 
 .nav {
-    background-color: #595959;
+    background-color: #336350;
     color: floralwhite;
     list-style: none;
     text-align: center;
     padding: 10px 0 10px 0;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 }
 
 .nav > li { /*Dette gør at vi kun rammer li som ligger inde i en nav*/
-    display:inline-block; /*Det vender links vertikalt, så de er på række*/
+    display: inline-block; /*Det vender links vertikalt, så de er på række*/
     padding: 0 25px 0 25px; /*top - left - bot - right.. dette spreder menuen ud*/
 }
 
 .nav > li > a {
-     text-decoration: none;
-     color: white;
-     font-size: large;
+    text-decoration: none;
+    color: white;
+    font-size: large;
 }
+
 .nav > li > a:hover {
     color: black;
-    background-color: white;
+    background-color: #336350;
 }
+
 #navimg {
     height: 35px;
 }
+
+/* nedenstående kun gældende på mobil*/
+@media screen and (max-width: 480px) {
+    .burger-nav {
+        display: block;
+        height: 40px;
+        width: 100%;
+        background: url(../images/dropdownicon.png) no-repeat 98% center;
+        background-color: #336350;
+        cursor: pointer;
+    }
+
+    header nav ul {
+        overflow: hidden;
+        background-color: #505050;
+        height:0;
+        padding: 0 0 0 0;
+    }
+
+    header nav ul.open {
+       height: auto;
+    }
+
+    header nav ul li {
+       float: none;
+       text-align: left;
+       width: 100%;
+       margin: 0;
+    }
+
+    header nav ul li a {
+       color: #fff;
+       padding: 10px;
+       border-bottom: 1px solid #404040;
+       display: block;
+       margin:0;
+     }
+    .nav {
+    height:0;
+    }
+}
+/*ovenstående kun gældende på mobil*/
 #row1 {
     padding-top: 5px;
 }
 
 #fronttable {
-    border: solid;
+    border: solid:
     background-color: white;
 }
 
