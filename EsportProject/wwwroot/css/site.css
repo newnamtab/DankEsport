@@ -4,7 +4,6 @@
     font-family: Calibri, serif;
     background-color: lightgrey;
 }
-
 .nav {
     background-color: #336350;
     color: floralwhite;
@@ -13,28 +12,23 @@
     padding: 10px 0 10px 0;
     font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 }
-
 .nav > li { /*Dette gør at vi kun rammer li som ligger inde i en nav*/
     display: inline-block; /*Det vender links vertikalt, så de er på række*/
     padding: 0 25px 0 25px; /*top - left - bot - right.. dette spreder menuen ud*/
 }
-
 .nav > li > a {
     text-decoration: none;
     color: white;
     font-size: large;
 }
-
 .nav > li > a:hover {
     color: black;
     background-color: #336350;
 }
-#navlogo {
-    height:50px;
-    padding-bottom:15px;
+#desknavlogo {
+    padding-right:0;
+    padding-left:0;
 }
-
-
 /* nedenstående kun gældende på mobil*/
 @media screen and (max-width: 480px) {
     .burger-nav {
@@ -45,36 +39,43 @@
         background-color: #336350;
         cursor: pointer;
     }
+
     header nav ul {
         overflow: hidden;
         background-color: #505050;
-        height:0;
+        height: 0;
         padding: 0 0 0 0;
     }
 
     .open {
-       height: auto;
+        height: auto;
     }
 
     header nav ul li {
-       float: none;
-       text-align: left;
-       width: 100%;
-       margin: 0;
+        float: none;
+        text-align: left;
+        width: 100%;
+        margin: 0;
     }
 
-    header nav ul li a {
-       color: #fff;
-       padding: 10px;
-       border-bottom: 1px solid #404040;
-       display: block;
-       margin:0;
-     }
+        header nav ul li a {
+            color: #fff;
+            padding: 10px;
+            border-bottom: 1px solid #404040;
+            display: block;
+            margin: 0;
+        }
+
     .nav {
-    padding: 0 0 0 0;
+        padding: 0 0 0 0;
     }
-    #navlogo {
-        display:none;
+
+    #desknavlogo {
+        display: none;
+    }
+
+    #mobilenavlogo {
+        height: 40px;
     }
 }
 /*ovenstående kun gældende på mobil*/
@@ -112,15 +113,9 @@ footer {
     margin-left: 50px;
 }
 
-#contactform {
-    background-color: aquamarine;
-    padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border: dashed;
-}
 @media(min-width: 600px) {
     #mobilenavlogo {
         display: none;
+        height:0;
     }
 }
