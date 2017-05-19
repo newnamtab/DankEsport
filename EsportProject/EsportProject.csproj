@@ -15,6 +15,7 @@
     <Content Include="wwwroot\images\navicon.png" />
     <Content Include="wwwroot\images\Placehold.jpg" />
     <Content Include="wwwroot\images\PLACEHOLDER.jpg" />
+    <Content Include="wwwroot\lib\favicon.ico" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
