@@ -2,53 +2,15 @@
     ViewData["Title"] = "Home Page";
 }
         <br />
-        <div id="row1" class="row">
-            <div class="col-md-5">
-                <div id="frontranktable">
-                    <table id="fronttable" class="table-condensed">
-                        <tr>
-                            <th>NPF17</th>
-                        </tr>
-                        <tr>
-                            <th>Team:</th>
-                            <th>Matches:</th>
-                            <th>Points:</th>
-                        </tr>
-                        <tr>
-                            <td>1: Hold 1</td>
-                            <td> 10 </td>
-                            <td> 10 </td>
-                        </tr>
-                        <tr>
-                            <td>2: Hold 2</td>
-                            <td> 10 </td>
-                            <td> 10 </td>
-                        </tr>
-                        <tr>
-                            <td>3: Hold 3</td>
-                            <td> 10 </td>
-                            <td> 10 </td>
-                        </tr>
-                        <tr>
-                            <td>4: Hold 4</td>
-                            <td> 10 </td>
-                            <td> 10 </td>
-                        </tr>
-                        <tr>
-                            <td>5: Hold 5</td>
-                            <td> 10 </td>
-                            <td> 10 </td>
-                        </tr>
-                    </table>
-                    <button>Watch all</button>
-                </div>
-            </div>
-        </div>
+
 
         <br />
 
         <div class="row">
-            <div id="frontwidthimg" class="col-md-12">
+            @*@Html.Partial("FrontRank")*@
+            @{ Html.RenderPartial("FrontRank");}
+
+            <div id="frontwidthimg" class="col-md-7">
                
                 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000" data-wrap="true">
                     <!-- Indicators -->
