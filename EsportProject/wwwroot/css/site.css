@@ -1,4 +1,7 @@
-﻿body {
+﻿@import url(http://fonts.googleapis.com/css?family=Lato);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+
+body {
     margin: 0;
     padding: 0;
     font-family: Calibri, serif;
@@ -30,6 +33,58 @@
     padding-left:0;
 }
 
+
+
+#row1 {
+    padding-top: 5px;
+}
+
+#fronttable {
+    border: solid;
+    background-color: white;
+    width:100%;
+    height:300px;
+}
+#frontth {
+    text-align: center;
+}
+
+#fronttable th {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+#fronttable td {
+    /*font-size: 16px;*/
+    font-size: 2vh;
+    text-align: center;
+    /*width:100%;*/
+}
+
+#frontnewsheader {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+footer {
+    background-color: #336350;
+    color:white;
+    opacity:0.9;
+    text-align: center;
+
+}
+
+.spacer {
+    margin-left: 50px;
+}
+
+
+@media(min-width: 600px) {
+    #mobilenavlogo {
+        display: none;
+        height:0;
+    }
+}
 /* nedenstående kun gældende på mobil*/
 @media screen and (max-width: 480px) {
     .burger-nav {
@@ -80,65 +135,4 @@
     }
 }
 /*ovenstående kun gældende på mobil*/
-#row1 {
-    padding-top: 5px;
-}
 
-#fronttable {
-    border: solid;
-    background-color: white;
-    width:100%;
-    height:300px;
-}
-#frontth {
-    text-align: center;
-}
-
-#fronttable th {
-    background-color: black;
-    color: white;
-    text-align: center;
-}
-#fronttable td {
-    /*font-size: 16px;*/
-    font-size: 2vh;
-    text-align: center;
-    /*width:100%;*/
-}
-
-#frontnewsheader {
-    text-align: center;
-    padding-bottom: 15px;
-}
-
-footer {
-    background-color: #336350;
-    color:white;
-    opacity:0.9;
-    text-align: center;
-
-}
-
-.spacer {
-    margin-left: 50px;
-}
-
-.fa {
-    padding: 20px;
-    font-size: 100px;
-    width: 50px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 90%;
-}
-
-.fa:hover {
-    opacity: 0.7;
-}
-
-@media(min-width: 600px) {
-    #mobilenavlogo {
-        display: none;
-        height:0;
-    }
-}
