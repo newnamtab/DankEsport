@@ -112,13 +112,28 @@
 }
 
 footer {
-    color: antiquewhite;
-    background-color: black;
+    background-color: #336350;
+    color:white;
+    opacity:0.9;
     text-align: center;
+
 }
 
 .spacer {
     margin-left: 50px;
+}
+
+.fa {
+    padding: 20px;
+    font-size: 100px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 90%;
+}
+
+.fa:hover {
+    opacity: 0.7;
 }
 
 @media(min-width: 600px) {

@@ -39,25 +39,36 @@
                 </ul>
             </nav>
     </header>
-    
-    
-
-    @*<div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-            <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
-            <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
-            <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
-            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-        </ul>
-    </div>*@
             
     <div class="container">
         @RenderBody()
         <hr />
         <footer>
+            <div class="row">
+                <div class="col-md-4">
+                    <h1>Pages:</h1>
+                    <h4>Home</h4>
+                    <h4>Tournament</h4>
+                    <h4>Teams</h4>
+                    <h4>Contact</h4>
+                </div>
+                <div class="col-md-4">
+                    <h1>Følg os på:</h1>
+                    <ul class="social-icons">
+
+                    </ul>
+</div>
+                <div class="col-md-4">
+                    <h1>Contact info:</h1>
+                    <h4>CVR: 0000005</h4>
+                    <h4>Adress: Lolvej.dk</h4>
+                    <h4>Tlf: 66554433</h4>
+                    <h4>Mail: Sodoff@hotgirl.com</h4>
+                </div>
+            </div>
             <p>&copy; 2017 - EsportProject - Made by DankBoyz</p>
         </footer>
+        
     </div>
 
     <environment names="Development">
