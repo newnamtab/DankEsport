@@ -119,3 +119,8 @@ footer {
     padding-bottom: 5px;
     border: dashed;
 }
+@media(min-width: 600px) {
+    #mobilenavlogo {
+        display: none;
+    }
+}
