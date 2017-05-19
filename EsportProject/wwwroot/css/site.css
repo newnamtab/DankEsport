@@ -52,7 +52,7 @@
         padding: 0 0 0 0;
     }
 
-    header nav ul.open {
+    .open {
        height: auto;
     }
 
@@ -118,4 +118,9 @@ footer {
     padding-top: 5px;
     padding-bottom: 5px;
     border: dashed;
+}
+@media(min-width: 600px) {
+    #mobilenavlogo {
+        display: none;
+    }
 }
