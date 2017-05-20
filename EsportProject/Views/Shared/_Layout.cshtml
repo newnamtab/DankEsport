@@ -15,6 +15,7 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     </environment>
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
@@ -46,7 +47,7 @@
         <footer>
             <div class="row">
                 <div class="col-md-4">
-                    <h1>Pages:</h1>
+                    <h3>Pages:</h3>
                     <ul class="footernav">
                         <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                         <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
@@ -57,10 +58,15 @@
 
                 </div>
                 <div class="col-md-4">
-                    <h1>Follow us on</h1>
+                    <h3>Follow us on</h3>
+                    <ul class="social-network social-circle">
+                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>		
                 </div>
                 <div class="col-md-4">
-                    <h1>Contact info:</h1>
+                    <h3>Contact info:</h3>
                     <h4>CVR: 0000005</h4>
                     <h4>Adress: Lolvej.dk</h4>
                     <h4>Tlf: 66554433</h4>
