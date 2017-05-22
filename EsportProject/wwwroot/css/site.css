@@ -54,13 +54,22 @@ body {
     color: white;
     text-align: center;
 }
-
-#fronttable td {
-    /*font-size: 16px;*/
-    font-size: 2vh;
-    text-align: center;
-    /*width:100%;*/
+#fronttable th .matchheader
+{
+    width:10%;
 }
+#fronttable th .pointsheader
+{
+    width:10%;
+}
+    
+#fronttable td {
+        /*font-size: 16px;*/
+        font-size: 1.5em;
+        text-align: center;
+        /*width:100%;*/
+    }
+
 
 #frontnewsheader {
     text-align: center;

@@ -10,6 +10,7 @@ namespace EsportProject.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -17,8 +18,12 @@ namespace EsportProject.Controllers
         public IActionResult Index()
         {
             _logger.LogInformation("Index/Home page logged");
-            return View();
+            //TEMPORARY VIEWMODEL ATTEMPT
+            Models.IndexViewModel viewModel = new Models.IndexViewModel();
+
+            return View(viewModel);
         }
+        
 
         public IActionResult Teams()
         {

@@ -1,20 +1,29 @@
-﻿<div class="col-md-3" id="frontranktable">
+﻿@model EsportProject.Models.FrontRankModel
+
+<div class="col-md-3" id="frontranktable">
     
-        <table id="fronttable" class="table-condensed" >
+        <table id="fronttable" class="table-responsive" >
             <tr>
-                <th>NPF17</th>
+                <th>@Model.TournamentName.ToString()</th>
             </tr>
             <tr>
                 <th>Team:</th>
-                <th>Matches:</th>
-                <th>Points:</th>
+                <th id="matchheader">Matches:</th>
+                <th id="pointsheader">Points:</th>
             </tr>
-            <tr>
-                <td>1: Hold 1</td>
-                <td> 10 </td>
-                <td> 10 </td>
-            </tr>
-            <tr>
+
+            
+                @for (int i = 0; i < 5; i++)
+                {
+                    <tr>
+                        <td>@(i+1): @Html.DisplayFor(modelItem => Model.Teams[i].TeamName)</td>
+                        <td>@Html.DisplayFor(modelitem => Model.Teams[i].Matches)</td>
+                        <td>@Html.DisplayFor(modelitem => Model.Teams[i].Points)</td>
+
+                    </tr>
+                }
+                          
+            @*<tr>
                 <td>2: Hold 2</td>
                 <td> 10 </td>
                 <td> 10 </td>
@@ -33,7 +42,7 @@
                 <td>5: Hold 5</td>
                 <td> 10 </td>
                 <td> 10 </td>
-            </tr>
+            </tr>*@
         </table>
         <button>Watch all</button>
     

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model EsportProject.Models.IndexViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
         <br />
@@ -8,7 +9,7 @@
 
         <div class="row">
             @*@Html.Partial("FrontRank")*@
-            @{ Html.RenderPartial("FrontRank");}
+            @{ Html.RenderPartial("FrontRank", Model.FrontRank);}
 
             <div id="frontwidthimg" class="col-md-9">
                
