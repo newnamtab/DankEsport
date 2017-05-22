@@ -8,12 +8,10 @@
             </tr>
             <tr>
                 <th>Team:</th>
-                <th id="matchheader">Matches:</th>
-                <th id="pointsheader">Points:</th>
+                <th>Matches:</th>
+                <th>Points:</th>
             </tr>
-
-            
-                @for (int i = 0; i < 5; i++)
+              @for (int i = 0; i < 5; i++)
                 {
                     <tr>
                         <td>@(i+1): @Html.DisplayFor(modelItem => Model.Teams[i].TeamName)</td>
@@ -22,31 +20,9 @@
 
                     </tr>
                 }
-                          
-            @*<tr>
-                <td>2: Hold 2</td>
-                <td> 10 </td>
-                <td> 10 </td>
-            </tr>
-            <tr>
-                <td>3: Hold 3</td>
-                <td> 10 </td>
-                <td> 10 </td>
-            </tr>
-            <tr>
-                <td>4: Hold 4</td>
-                <td> 10 </td>
-                <td> 10 </td>
-            </tr>
-            <tr>
-                <td>5: Hold 5</td>
-                <td> 10 </td>
-                <td> 10 </td>
-            </tr>*@
+
         </table>
-        <button>Watch all</button>
+    @Html.ActionLink("Watch All", "Tournaments", "Home", htmlAttributes: new { @class = "btn btn-default" })  
+    @*<button>Watch all</button>*@
     
 </div>
-
-@{
-}

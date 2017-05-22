@@ -54,14 +54,6 @@ body {
     color: white;
     text-align: center;
 }
-#fronttable th .matchheader
-{
-    width:10%;
-}
-#fronttable th .pointsheader
-{
-    width:10%;
-}
     
 #fronttable td {
         /*font-size: 16px;*/

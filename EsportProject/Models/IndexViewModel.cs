@@ -19,9 +19,9 @@ namespace EsportProject.Models
                 this.FrontRank.Teams[i].TeamName = "Team " + ran.Next(10);
                 this.FrontRank.Teams[i].Matches = ran.Next(10);
                 this.FrontRank.Teams[i].Points = ran.Next(100);
-
             }
-            
+            this.FrontRank.Teams = this.FrontRank.Teams.OrderByDescending(item => item.Points).ToArray();
+         
         }
     }
 }
