@@ -5,15 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EsportProject</title>
-    <link rel="shortcut icon" type="image/png" href="~/lib/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="~/lib/favicon.ico" />
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/adminstyle.css" />
         <link rel="stylesheet" href="~/css/newsstyle.css" />
         <link rel="stylesheet" href="~/css/contactstyle.css" />
         <link rel="stylesheet" href="~/css/footerstyle.css" />
         <link rel="stylesheet" href="~/css/fronttablestyle.css" />
-        <link rel="stylesheet" href="~/css/navstyle.css"/>
+        <link rel="stylesheet" href="~/css/navstyle.css" />
         <link rel="stylesheet" href="~/css/tournamentstyle.css" />
     </environment>
     <environment names="Staging,Production">
@@ -30,23 +31,32 @@
         <img id="frontheader" src="~/images/PLACEHOLDER.jpg" alt="Visual Studio" class="img-responsive" />
     </div>
     <header>
-            <nav>
-                <a class="burger-nav">
-                    <div>
-                        <img id="mobilenavlogo" src="~/images/DANKRANK.png" />
-                    </div>
-                </a>
-                <ul class="nav">
-                    <li><a id="desknavlogo" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/DANKRANK.png" /></a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-            </nav>
+        <nav>
+            <a class="burger-nav">
+                <div>
+                    <img id="mobilenavlogo" src="~/images/DANKRANK.png" />
+                </div>
+            </a>
+            <ul class="nav">
+                <li><a id="desknavlogo" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/DANKRANK.png" /></a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="dropdown">
+                <li><a href="#">Create news</a></li>
+                <li><a href="#">Archives</a></li>
+                <li><a href="#">Edit tournaments</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+
+        </nav>
     </header>
-            
+
     <div class="container">
         @RenderBody()
         <hr />
@@ -69,7 +79,7 @@
                         <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>		
+                    </ul>
                 </div>
                 <div class="col-md-4">
                     <h3>Contact info:</h3>
