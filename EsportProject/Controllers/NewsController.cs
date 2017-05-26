@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EsportProject.Models.DBmodels;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace EsportProject.Controllers
 {
@@ -13,9 +15,10 @@ namespace EsportProject.Controllers
     {
         private readonly NewsContext _context;
 
-        public NewsController(NewsContext context)
+        public NewsController(NewsContext context, IHostingEnvironment environment)
         {
-            _context = context;    
+            _context = context;
+
         }
 
         // GET: News
@@ -62,7 +65,9 @@ namespace EsportProject.Controllers
                 return RedirectToAction("Index");
             }
             return View(news);
+
         }
+
 
         // GET: News/Edit/5
         public async Task<IActionResult> Edit(int? id)
