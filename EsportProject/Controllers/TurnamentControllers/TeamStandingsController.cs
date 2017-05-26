@@ -7,15 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EsportProject.Models.DBmodels;
 
+
 namespace EsportProject.Controllers.TurnamentControllers
 {
     public class TeamStandingsController : Controller
     {
         private readonly TurnamentContext _context;
-
         public TeamStandingsController(TurnamentContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
         // GET: TeamStandings
@@ -45,6 +45,14 @@ namespace EsportProject.Controllers.TurnamentControllers
         // GET: TeamStandings/Create
         public IActionResult Create()
         {
+            List<Team> teamList = _context.Team
+                                    .FromSql("SELECT * FROM Team")
+                                    .ToList();
+            List<Turnament> TurnamentList = _context.Turnament
+                                    .FromSql("SELECT * FROM Turnament")
+                                    .ToList();
+            ViewData["teams"] = teamList;
+            ViewData["turnament"] = TurnamentList;
             return View();
         }
 
