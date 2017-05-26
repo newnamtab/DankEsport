@@ -1,0 +1,49 @@
+@model EsportProject.Models.DBmodels.TeamStanding
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>TeamStanding</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="WonMatches" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="WonMatches" class="form-control" />
+                <span asp-validation-for="WonMatches" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="drawMatches" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="drawMatches" class="form-control" />
+                <span asp-validation-for="drawMatches" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="LostMatches" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LostMatches" class="form-control" />
+                <span asp-validation-for="LostMatches" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

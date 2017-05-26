@@ -39,6 +39,7 @@ namespace EsportProject
             //DBconnection
             var connection = @"Server=mysql34.unoeuro.com;User Id=cronen_dk;Password=testyv92;Database=cronen_dk_db";
             services.AddDbContext<NewsContext>(options => options.UseMySql(connection));
+            services.AddDbContext<TurnamentContext>(options => options.UseMySql(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
