@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <Content Include="wwwroot\css\adminloginstyle.css" />
-    <Content Include="wwwroot\css\adminstyle.css" />
     <Content Include="wwwroot\css\contactstyle.css" />
     <Content Include="wwwroot\css\footerstyle.css" />
     <Content Include="wwwroot\css\fronttablestyle.css" />
