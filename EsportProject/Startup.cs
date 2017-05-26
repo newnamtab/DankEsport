@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using NLog.Web;
 using Microsoft.AspNetCore.Http;
+using EsportProject.Models.DBmodels;
+using Microsoft.EntityFrameworkCore;
 
 namespace EsportProject
 {
@@ -34,6 +36,9 @@ namespace EsportProject
             // Add framework services.
             services.AddMvc();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //DBconnection
+            var connection = @"Server=mysql34.unoeuro.com;User Id=cronen_dk;Password=testyv92;Database=cronen_dk_db";
+            services.AddDbContext<NewsContext>(options => options.UseMySql(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
