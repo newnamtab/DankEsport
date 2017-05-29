@@ -34,6 +34,8 @@ namespace EsportProject
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddSession();
+            services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
             services.AddMvc();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //DBconnection
@@ -45,6 +47,8 @@ namespace EsportProject
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            // IMPORTANT: This session call MUST go before UseMvc()
+            app.UseSession();
             //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             //loggerFactory.AddDebug();
             //Overstående fjernes grundet NLog
