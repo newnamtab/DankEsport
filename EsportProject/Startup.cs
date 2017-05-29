@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using EsportProject.Models.DBmodels;
 using Microsoft.EntityFrameworkCore;
 using EsportProject.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EsportProject
 {
@@ -38,6 +39,9 @@ namespace EsportProject
             services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
             services.AddMvc();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<UserContext>()
+                .AddDefaultTokenProviders();
             //DBconnection
             var connection = @"Server=mysql34.unoeuro.com;User Id=cronen_dk;Password=testyv92;Database=cronen_dk_db";
             services.AddDbContext<NewsContext>(options => options.UseMySql(connection));
@@ -56,7 +60,7 @@ namespace EsportProject
             //Overstående fjernes grundet NLog
             loggerFactory.AddNLog();
             app.AddNLogWeb();
-
+            app.UseIdentity();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

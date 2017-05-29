@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EsportProject.Models.DBmodels
 {
-    public class UserContext : DbContext
+    public class UserContext : IdentityDbContext<ApplicationUser>
     {
         public UserContext(DbContextOptions<UserContext> options)
             : base(options)
