@@ -66,7 +66,7 @@ namespace EsportProject.Controllers
                                .Parse(file.ContentDisposition)
                                .FileName
                                .Trim('"');
-            news.imgURL = $@"\wwwroot\images\" + filename; //Sets the path of the img to the news object
+            news.imgURL = $@"\images\" + filename; //Sets the path of the img to the news object
             filename = _environment.WebRootPath + $@"\images\" + filename;
             size += file.Length;
             using (FileStream fs = System.IO.File.Create(filename))
