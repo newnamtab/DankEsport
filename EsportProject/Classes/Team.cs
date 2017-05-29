@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EsportProject.Classes
 {
-    public class Team
+    public class Teams
     {
         public string TeamName { get; set; }
         public int Matches { get; set; }

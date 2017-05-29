@@ -5,15 +5,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EsportProject</title>
-    <link rel="shortcut icon" type="image/png" href="~/lib/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="~/lib/favicon.ico" />
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/adminstyle.css" />
         <link rel="stylesheet" href="~/css/newsstyle.css" />
-        <link rel="stylesheet" href="~/css/contactstyle.css" />
         <link rel="stylesheet" href="~/css/footerstyle.css" />
         <link rel="stylesheet" href="~/css/fronttablestyle.css" />
-        <link rel="stylesheet" href="~/css/navstyle.css"/>
+        <link rel="stylesheet" href="~/css/navstyle.css" />
         <link rel="stylesheet" href="~/css/tournamentstyle.css" />
     </environment>
     <environment names="Staging,Production">
@@ -30,23 +30,27 @@
         <img id="frontheader" src="~/images/PLACEHOLDER.jpg" alt="Visual Studio" class="img-responsive" />
     </div>
     <header>
-            <nav>
-                <a class="burger-nav">
-                    <div>
-                        <img id="mobilenavlogo" src="~/images/DANKRANK.png" />
-                    </div>
-                </a>
-                <ul class="nav">
-                    <li><a id="desknavlogo" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/DANKRANK.png" /></a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-            </nav>
+        
+        <nav>
+            <a class="burger-nav">
+                <div>
+                    <img id="mobilenavlogo" src="~/images/DANKRANK.png" />
+                </div>
+            </a>
+            <ul class="nav">
+                <li><a id="desknavlogo" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/DANKRANK.png" /></a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <li><a asp-area="" asp-controller="Admin" asp-action="Createnews">Adminpage</a></li>
+            </ul>
+        </nav>
+
+
     </header>
-            
+
     <div class="container">
         @RenderBody()
         <hr />
@@ -69,7 +73,7 @@
                         <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>		
+                    </ul>
                 </div>
                 <div class="col-md-4">
                     <h3>Contact info:</h3>
@@ -87,13 +91,22 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=4yu7530e5ugb13g3nm5qcu056x5nzj2ilakpgky4mkjjilyf"></script>
+        <script>
+            tinymce.init({
+                selector: '#mytextarea',
+                max_height: 300,
+                max_width: 500,
+                branding: false
+            });
+        </script>
+    </environment >
+                  <environment names="Staging,Production">
+                      <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                          asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                          asp-fallback-test="window.jQuery"
+                          crossorigin="anonymous"
+                          integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
         </script>
         <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"

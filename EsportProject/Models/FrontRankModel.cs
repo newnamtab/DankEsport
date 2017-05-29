@@ -8,14 +8,14 @@ namespace EsportProject.Models
     public class FrontRankModel
     {
         public string TournamentName { get; set; }
-        public Classes.Team[] Teams { get; set; }
+        public Classes.Teams[] Teams { get; set; }
 
         public FrontRankModel()
         {
-            this.Teams = new Classes.Team[5];
+            this.Teams = new Classes.Teams[5];
             for (int i = 0; i < 5; i++)
             {
-                Teams[i] = new Classes.Team();
+                Teams[i] = new Classes.Teams();
             }
         }
     }

@@ -1,0 +1,12 @@
+﻿#adminnav {
+    background-color: #336350;
+    color: floralwhite;
+    list-style: none;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+}
+#adminnav li {
+    display: inline-block; /*Det vender links vertikalt, så de er på række*/
+    padding: 0 25px 0 25px; /*top - left - bot - right.. dette spreder menuen ud*/
+}
