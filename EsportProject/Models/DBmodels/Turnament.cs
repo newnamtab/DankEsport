@@ -11,6 +11,5 @@ namespace EsportProject.Models.DBmodels
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime Slutdate { get; set; }
-        public List<TeamStanding> Standings { get; set; }
     }
 }

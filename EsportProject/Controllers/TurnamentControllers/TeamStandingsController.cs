@@ -61,7 +61,7 @@ namespace EsportProject.Controllers.TurnamentControllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TeamStandingID,WonMatches,drawMatches,LostMatches")] TeamStanding teamStanding)
+        public async Task<IActionResult> Create([Bind("TeamStandingID,Turnament,Team,WonMatches,drawMatches,LostMatches")] TeamStanding teamStanding)
         {
             if (ModelState.IsValid)
             {
