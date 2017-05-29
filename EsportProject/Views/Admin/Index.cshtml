@@ -1,3 +1,5 @@
+﻿@model EsportProject.Models.DBmodels.User
+
 @{
     Layout = null;
     ViewData["Title"] = "Admin page";
@@ -23,7 +25,25 @@
     </environment>
 </head>
 <body>
-    <form>
+    <form method="post" asp-action="Login" asp-controller="Admin">
+        <div asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="Username"><b>Username</b></label>
+            <input asp-for="Username"/>
+            <span asp-validation-for="Username"></span>
+        </div>
+        <div>
+            <label asp-for="Password"><b>Password</b></label>
+            <input asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div>
+            <input type="submit" value="Log In"/>
+        </div>
+    </form>
+   
+
+    @*<form>
         <div class="imgcontainer">
             <img src="~/images/logo.png" alt="login" class="avatar">
         </div>
@@ -43,7 +63,7 @@
             <button type="button" class="cancelbtn">Cancel</button>
             <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
-    </form>
+    </form>*@
 </body>
 </html>
 

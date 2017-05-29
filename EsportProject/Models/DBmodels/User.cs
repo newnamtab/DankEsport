@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
 namespace EsportProject.Models.DBmodels
 {
     public class UserContext : DbContext
     {
-        public UserContext(DbContextOptions<NewsContext> options)
+        public UserContext(DbContextOptions<UserContext> options)
             : base(options)
         { }
         public DbSet<User> User { get; set; }
     }
     public class User
     {
+        
         public int UserID { get; set; }
+        [Required]
         public string Username { get; set; }
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public string Role { get; set; }
 
