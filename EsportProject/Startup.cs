@@ -36,7 +36,10 @@ namespace EsportProject
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddSession();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.CookieName = ".MyApplication";
+            });
             services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
             services.AddMvc();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

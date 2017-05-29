@@ -25,45 +25,34 @@
     </environment>
 </head>
 <body>
-    <form method="post" asp-action="Index" asp-controller="Admin">
-        <div asp-validation-summary="All"></div>
-        <div>
-            <label asp-for="Username"><b>Username</b></label>
-            <input asp-for="Username"/>
-            <span asp-validation-for="Username"></span>
-        </div>
-        <div>
-            <label asp-for="Password"><b>Password</b></label>
-            <input asp-for="Password" />
-            <span asp-validation-for="Password"></span>
-        </div>
-        <div>
-            <input type="submit" value="Log In"/>
-        </div>
-    </form>
-   
 
-    @*<form>
+    <form method="post" asp-action="Index" asp-controller="Admin">
+        
         <div class="imgcontainer">
             <img src="~/images/logo.png" alt="login" class="avatar">
         </div>
-
+        <center>
+            <div asp-validation-summary="All"></div>
+        </center>
+        
         <div class="container">
-            <label><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
-
-            <label><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-
-            <button type="submit">Login</button>
-            <input type="checkbox" checked="checked"> Remember me
+            <div>
+                <label asp-for="Username"><b>Username</b></label>
+                <input placeholder="Enter Username" asp-for="Username" />
+                <span asp-validation-for="Username"></span>
+            </div>
+            <div>
+                <label asp-for="Password"><b>Password</b></label>
+                <input placeholder="Enter password" asp-for="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div>
+                <input type="submit" value="Log In" />
+            </div>
         </div>
-
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
-    </form>*@
+        
+    </form>
+   
 </body>
 </html>
 

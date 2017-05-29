@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using EsportProject.Models.DBmodels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Session;
 
 namespace EsportProject.Controllers
 {
@@ -33,6 +34,8 @@ namespace EsportProject.Controllers
                 {
                     if (user.Username == UM.Username && user.Password == UM.Password)
                     {
+
+                        HttpContext.Session.SetString("Username", user.Username);
                         return View("Actions", "Admin");
                     }
                 }
