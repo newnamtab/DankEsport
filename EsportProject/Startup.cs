@@ -40,9 +40,6 @@ namespace EsportProject
             services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
             services.AddMvc();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<UserContext>()
-                .AddDefaultTokenProviders();
             //DBconnection
             var connection = @"Server=mysql34.unoeuro.com;User Id=cronen_dk;Password=testyv92;Database=cronen_dk_db";
             services.AddDbContext<NewsContext>(options => options.UseMySql(connection));
@@ -56,7 +53,6 @@ namespace EsportProject
         {
             // IMPORTANT: This session call MUST go before UseMvc()
             app.UseSession();
-            app.UseIdentity();
             //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             //loggerFactory.AddDebug();
             //Overstående fjernes grundet NLog
