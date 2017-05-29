@@ -12,11 +12,7 @@ namespace EsportProject.Controllers
         {
             return View();
         }
-        public IActionResult Createnews()
-        {
-            return View();
-        }
-        public IActionResult Archived()
+        public IActionResult Actions()
         {
             return View();
         }

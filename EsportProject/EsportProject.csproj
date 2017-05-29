@@ -24,6 +24,7 @@
     <Content Include="wwwroot\images\navicon.png" />
     <Content Include="wwwroot\images\Placehold.jpg" />
     <Content Include="wwwroot\images\PLACEHOLDER.jpg" />
+    <Content Include="wwwroot\images\Placeholder.png" />
     <Content Include="wwwroot\lib\favicon.ico" />
   </ItemGroup>
   <ItemGroup>
