@@ -12,7 +12,6 @@ using NLog.Web;
 using Microsoft.AspNetCore.Http;
 using EsportProject.Models.DBmodels;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using EsportProject.Models;
 
 namespace EsportProject
@@ -36,7 +35,7 @@ namespace EsportProject
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddSession();
+            //services.AddSession();
             services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
             services.AddMvc();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -52,7 +51,7 @@ namespace EsportProject
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             // IMPORTANT: This session call MUST go before UseMvc()
-            app.UseSession();
+            //app.UseSession();
             //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             //loggerFactory.AddDebug();
             //Overstående fjernes grundet NLog
