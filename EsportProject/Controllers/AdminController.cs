@@ -23,11 +23,6 @@ namespace EsportProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var result = await _signInManager.PasswordSignInAsync(UM.Username, UM.Password);
-                //if (result.Succeeded)
-                //{
-                //    return RedirectToAction("Index", "Admin");
-                //}
 
             }
             return View(UM);
