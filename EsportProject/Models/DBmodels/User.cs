@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EsportProject.Models.DBmodels
 {
-    public class UserContext : IdentityDbContext<ApplicationUser>
+    public class UserContext : DbContext
     {
         public UserContext(DbContextOptions<UserContext> options)
             : base(options)
@@ -17,7 +17,6 @@ namespace EsportProject.Models.DBmodels
     }
     public class User
     {
-        
         public int UserID { get; set; }
         [Required]
         public string Username { get; set; }

@@ -12,32 +12,36 @@ namespace EsportProject.Controllers
     public class AdminController : Controller
     {
         private readonly UserContext _context;
+        public AdminController(UserContext context)
+        {
+            _context = context;
+
+        }
+        [HttpGet]
         public IActionResult Index()
         {
-
-            var Userlist = _context.User.FromSql("SELECT * FROM User").ToList();
             return View();
         }
+
         [HttpPost]
-        public IActionResult Login(User UM)
+        public IActionResult Index(User UM)
         {
+            List<User> userlist = _context.User.ToList() as List<User>;
             if (ModelState.IsValid)
             {
-
+                foreach (var user in userlist)
+                {
+                    if (user.Username == UM.Username && user.Password == UM.Password)
+                    {
+                        return View("Actions", "Admin");
+                    }
+                }
             }
-            return View(UM);
+            return View();
         }
 
         public IActionResult Actions()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return View();
-            }
-            else
-            {
-
-            }
             return View();
         }
     }
