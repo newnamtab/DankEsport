@@ -19,10 +19,7 @@
                     @Html.DisplayNameFor(model => model.subtitle)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Content)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.imgURL)
+                    Image
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.CreateDate)
@@ -40,10 +37,8 @@
                 @Html.DisplayFor(modelItem => item.subtitle)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imgURL)
+                <img src="@Html.DisplayFor(modelItem => item.imgURL)" alt="NewsIMG" style="height:114px;max-width:300px;">
+                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreateDate)
