@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MailKit.Net.Smtp;
 using MimeKit;
+using EsportProject.Models.DBmodels;
 
 
 namespace EsportProject.Controllers
@@ -13,10 +14,12 @@ namespace EsportProject.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly NewsContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, NewsContext context)
         {
             _logger = logger;
+            _context = context;
         }
         public IActionResult Index()
         {
@@ -42,8 +45,9 @@ namespace EsportProject.Controllers
 
         public IActionResult News()
         {
+            IEnumerable<News> model = _context.News.ToList() as IEnumerable<News>;
             _logger.LogInformation("News page logged");
-            return View();
+            return View(model);
         }
 
         [HttpGet]

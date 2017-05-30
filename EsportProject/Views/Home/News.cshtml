@@ -1,10 +1,36 @@
-﻿@{
+﻿@model IEnumerable<EsportProject.Models.DBmodels.News>
+
+@{
     ViewData["Title"] = "News Page";
 }
 
 <center>
     <h1 id="newsheadline">News</h1>
 </center>
+<table class="table" style="text-align: center; margin:0 auto">
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+                    <br />
+                    <strong>@Html.DisplayFor(modelItem => item.subtitle)</strong>
+                </td>
+            </tr>
+                <tr>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.imgURL)" alt="NewsIMG" style="height:114px;max-width:300px;">
+                        <br />
+                        @Html.Raw(item.Content)
+                    </td>
+                </tr>
+                <hr />
+        }
+    </tbody>
+</table>
+<br />
+
 
 <div class="row">
     <div class="col-md-3">
