@@ -26,7 +26,7 @@
     }
 
 /* Add a background color and some padding around the form */
-form {
+#contactform {
     padding: 20px;
     border: solid;
     border-radius: 1px;
