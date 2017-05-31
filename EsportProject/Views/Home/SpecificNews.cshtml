@@ -1,35 +1,28 @@
 @model EsportProject.Models.DBmodels.News
 
 @{
-    ViewData["Title"] = "SpecificNews";
+    ViewData["Title"] = "Specific News";
 }
 
-
-<div>
-    <dl class="dl-horizontal">
-        <dd>
-            <h1>
-                @Html.DisplayFor(model => model.Title)
-            </h1>
-        </dd>
-        <dd>
-            <sub>
-                @Html.DisplayFor(model => model.CreateDate)
-            </sub>
-            <h3>
-                @Html.DisplayFor(model => model.subtitle)
-            </h3>
-        </dd>
-        <dd>
-            <img src="@Html.DisplayFor(model => model.imgURL)" alt="NewsIMG" class="img-responsive" height="280" width="280">
-        </dd>
-        <dd>
-            @Html.Raw(Model.Content)
-        </dd>
-
-
-    </dl>
+<div class="row">
+    <center>
+        <div class="col-md-12">
+            <div>
+                <img id="specificnewsimg" src="@Html.DisplayFor(model => model.imgURL)" alt="NewsIMG" class="img-responsive" height="280" width="280">
+            </div>
+            <div>
+                <h1 id="specificnewstitle">@Html.DisplayFor(model => model.Title)</h1>
+                <h4 id="specificnewstime">Skrevet af Admin @Html.DisplayFor(model => model.CreateDate)</h4>
+                <h3 id="specificnewssubtitle">@Html.DisplayFor(model => model.subtitle)</h3>
+            </div>
+            <div id="specificnewscontent">
+                @Html.Raw(Model.Content)
+            </div>
+            <div>
+                <a asp-action="News">Tilbage</a>
+            </div>
+        </div>
+    </center>
+    
 </div>
-<div>
-    <a asp-action="News">Tilbage</a>
-</div>
+
