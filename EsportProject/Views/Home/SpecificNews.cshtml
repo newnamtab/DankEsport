@@ -4,25 +4,29 @@
     ViewData["Title"] = "Specific News";
 }
 
-<div class="row">
-    <center>
-        <div class="col-md-12">
+<div class="container">
+    <div class="row">
+        <div id="specificnewsarticle" class="col-md-12">
             <div>
-                <img id="specificnewsimg" src="@Html.DisplayFor(model => model.imgURL)" alt="NewsIMG" class="img-responsive" height="280" width="280">
+                <center>
+                    <h1 id="specificnewstitle">@Html.DisplayFor(model => model.Title)</h1>
+
+                    <img id="specificnewsimg" src="@Html.DisplayFor(model => model.imgURL)" alt="NewsIMG" class="img-responsive" height="280" width="280">
+
+                </center>
             </div>
             <div>
-                <h1 id="specificnewstitle">@Html.DisplayFor(model => model.Title)</h1>
-                <h4 id="specificnewstime">Skrevet af Admin @Html.DisplayFor(model => model.CreateDate)</h4>
                 <h3 id="specificnewssubtitle">@Html.DisplayFor(model => model.subtitle)</h3>
+                <h6 id="specificnewstime">Skrevet af Admin @Html.DisplayFor(model => model.CreateDate)</h6>
             </div>
             <div id="specificnewscontent">
                 @Html.Raw(Model.Content)
             </div>
-            <div>
-                <a asp-action="News">Tilbage</a>
-            </div>
         </div>
-    </center>
-    
+    </div>
+    <div>
+        <a id="linkback" asp-action="News">Tilbage</a>
+    </div>
 </div>
+
 

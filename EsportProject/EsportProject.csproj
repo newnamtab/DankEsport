@@ -15,6 +15,7 @@
     <Content Include="wwwroot\css\fronttablestyle.css" />
     <Content Include="wwwroot\css\navstyle.css" />
     <Content Include="wwwroot\css\newsstyle.css" />
+    <Content Include="wwwroot\css\SpecificNews.css" />
     <Content Include="wwwroot\css\tournamentstyle.css" />
     <Content Include="wwwroot\images\background.jpg" />
     <Content Include="wwwroot\images\DANKRANK.png" />
