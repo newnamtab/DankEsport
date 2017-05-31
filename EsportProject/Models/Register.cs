@@ -13,7 +13,7 @@ namespace EsportProject.Models
         [Required, MinLength(6),MaxLength(50),DataType(DataType.Password),Display(Name = "Password")]
         public string Password { get; set; }
         [Required, MinLength(6), MaxLength(50), DataType(DataType.Password), Display(Name = "Confirm Password")]
-        
+        [Compare("Password", ErrorMessage = "The password does not match. Crone skal være en daddy")]
         public string ConfirmPassword { get; set; }
 
     }
