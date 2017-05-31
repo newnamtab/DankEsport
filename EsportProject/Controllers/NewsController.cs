@@ -65,7 +65,7 @@ namespace EsportProject.Controllers
             var filename = ContentDispositionHeaderValue
                                .Parse(file.ContentDisposition)
                                .FileName
-                               .Trim('"');
+                               .Trim('"').Replace('+','_');
             news.imgURL = $@"\images\" + filename; //Sets the path of the img to the news object
             filename = _environment.WebRootPath + $@"\images\" + filename;
             size += file.Length;

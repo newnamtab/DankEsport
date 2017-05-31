@@ -11,26 +11,34 @@
 @{List<EsportProject.Models.DBmodels.News> modelList = Model as List<EsportProject.Models.DBmodels.News>; }
 
 @for (int i = 0; i < modelList.Count(); i += 2)
-            {
+{
     <div class="row text-center">
-        <div class="col-md-5">
+        <div class="col-md-6">
             <h3>@Html.Raw(modelList[i].Title)</h3>
-            <img src="@modelList[i].imgURL" alt="NewsIMG" style="height:114px;max-width:300px;">
+            <img src="@modelList[i].imgURL" alt="NewsIMG" class="img-responsive center-block" height="280" width="280">
             <br />
             <strong>@Html.Raw(modelList[i].subtitle)</strong>
-            @Html.Raw(modelList[i].Content)
-        </div>
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-5">
-            <h3>@Html.Raw(modelList[i + 1].Title)</h3>
-            <img src="@modelList[i+1].imgURL" alt="NewsIMG" style="height:114px;max-width:300px;">
             <br />
-            <strong>@Html.Raw(modelList[i + 1].subtitle)</strong>
-            @Html.Raw(modelList[i + 1].Content)
+            @Html.Raw(modelList[i].Content)
+            <br />
+            <a asp-action="SpecificNews" asp-route-id="@modelList[i].NewsID">Se Nyhed</a> |
         </div>
+        @if (i + 2 <= modelList.Count())
+        {
+            <div class="col-md-6">
+                <h3>@Html.Raw(modelList[i + 1].Title)</h3>
+                <img src="@modelList[i+1].imgURL" alt="NewsIMG" class="img-responsive center-block" height="280" width="280">
+                <br />
+                <strong>@Html.Raw(modelList[i + 1].subtitle)</strong>
+                <br />
+                @Html.Raw(modelList[i + 1].Content)      
+                <br />
+                <a asp-action="SpecificNews" asp-route-id="@modelList[i+1].NewsID">Se Nyhed</a> |
+            </div>
+        }
     </div>
     <hr />
+
 }
 
 <br />

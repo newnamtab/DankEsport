@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using MailKit.Net.Smtp;
 using MimeKit;
 using EsportProject.Models.DBmodels;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace EsportProject.Controllers
 {
@@ -48,6 +48,19 @@ namespace EsportProject.Controllers
             IEnumerable<News> model = _context.News.ToList() as IEnumerable<News>;
             _logger.LogInformation("News page logged");
             return View(model);
+        }
+        public async Task<IActionResult> SpecificNews(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("News", "Home");
+            }
+            var news = await _context.News.SingleOrDefaultAsync(m => m.NewsID == id);
+            if (news == null)
+            {
+                return RedirectToAction("News", "Home");
+            }
+            return View(news);
         }
 
         [HttpGet]

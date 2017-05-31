@@ -1,0 +1,36 @@
+@model EsportProject.Models.DBmodels.News
+
+@{
+    ViewData["Title"] = "SpecificNews";
+}
+
+<h2>SpecificNews</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dd>
+            <h1>
+                @Html.DisplayFor(model => model.Title)
+            </h1>
+        </dd>
+        <dd>
+            <sub>
+                @Html.DisplayFor(model => model.CreateDate)
+            </sub>
+            <h3>
+                @Html.DisplayFor(model => model.subtitle)
+            </h3>
+        </dd>
+        <dd>
+            <img src="@Html.DisplayFor(model => model.imgURL)" alt="NewsIMG" class="img-responsive" height="280" width="280">
+        </dd>
+        <dd>
+            @Html.Raw(Model.Content)
+        </dd>
+
+
+    </dl>
+</div>
+<div>
+    <a asp-action="News">Tilbage</a>
+</div>
