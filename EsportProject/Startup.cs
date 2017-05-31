@@ -47,7 +47,7 @@ namespace EsportProject
             services.AddDbContext<NewsContext>(options => options.UseMySql(connection));
             services.AddDbContext<TurnamentContext>(options => options.UseMySql(connection));
             services.AddDbContext<UserContext>(options => options.UseMySql(connection));
-
+            services.AddDbContext<ContactContext>(options => options.UseMySql(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
