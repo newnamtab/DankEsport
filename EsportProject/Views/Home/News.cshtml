@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<EsportProject.Models.DBmodels.News>
 
+
 @{
     ViewData["Title"] = "News Page";
 }
@@ -7,29 +8,32 @@
 <center>
     <h1 id="newsheadline">News</h1>
 </center>
-<table class="table" style="text-align: center; margin:0 auto">
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
-                    <br />
-                    <strong>@Html.DisplayFor(modelItem => item.subtitle)</strong>
-                </td>
-            </tr>
-                <tr>
-                    <td>
-                        <img src="@Html.DisplayFor(modelItem => item.imgURL)" alt="NewsIMG" style="height:114px;max-width:300px;">
-                        <br />
-                        @Html.Raw(item.Content)
-                    </td>
-                </tr>
-        }
-    </tbody>
-</table>
-<br />
+@{List<EsportProject.Models.DBmodels.News> modelList = Model as List<EsportProject.Models.DBmodels.News>; }
 
+@for (int i = 0; i < modelList.Count(); i += 2)
+            {
+    <div class="row text-center">
+        <div class="col-md-5">
+            <h3>@Html.Raw(modelList[i].Title)</h3>
+            <img src="@modelList[i].imgURL" alt="NewsIMG" style="height:114px;max-width:300px;">
+            <br />
+            <strong>@Html.Raw(modelList[i].subtitle)</strong>
+            @Html.Raw(modelList[i].Content)
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-5">
+            <h3>@Html.Raw(modelList[i + 1].Title)</h3>
+            <img src="@modelList[i+1].imgURL" alt="NewsIMG" style="height:114px;max-width:300px;">
+            <br />
+            <strong>@Html.Raw(modelList[i + 1].subtitle)</strong>
+            @Html.Raw(modelList[i + 1].Content)
+        </div>
+    </div>
+    <hr />
+}
+
+<br />
 
 <div class="row">
     <div class="col-md-3">

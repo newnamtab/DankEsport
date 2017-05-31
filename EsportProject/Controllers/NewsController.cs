@@ -170,26 +170,5 @@ namespace EsportProject.Controllers
         {
             return _context.News.Any(e => e.NewsID == id);
         }
-        [HttpPost]
-        public async Task<IActionResult> Upload(IList<IFormFile> files)
-        {
-            long size = 0;
-            foreach (var file in files)
-            {
-                var filename = ContentDispositionHeaderValue
-                                .Parse(file.ContentDisposition)
-                                .FileName
-                                .Trim('"');
-                filename = _environment.WebRootPath + $@"\images\" + filename;
-                size += file.Length;
-                using (FileStream fs = System.IO.File.Create(filename))
-                {
-                    file.CopyTo(fs);
-                    fs.Flush();
-                }
-            }
-            ViewBag.Message = $"file" + size + " bytes uploaded successfully!";
-            return RedirectToAction("Index");
-        }
     }
 }
