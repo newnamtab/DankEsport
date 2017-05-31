@@ -8,9 +8,12 @@
 
 #specificnewsimg {
     padding-top: 25px;
-    width:1150px;
-    height:350px;
+    width: 1150px;
+    height: 350px;
 }
+    #specificnewsimg:hover {
+        
+    }
 
 #specificnewstitle {
 

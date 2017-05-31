@@ -1,5 +1,5 @@
 ﻿.nav {
-    background-color: #336350;
+    background-color: #021533;
     color: floralwhite;
     list-style: none;
     text-align: center;
@@ -19,8 +19,8 @@
         }
 
             .nav > li > a:hover {
-                color: black;
-                background-color: #336350;
+                opacity:0.4;
+                background-color: #021533;
             }
 
 #desknavlogo {

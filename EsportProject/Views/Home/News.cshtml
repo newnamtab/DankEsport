@@ -15,20 +15,48 @@
     <div class="row text-center">
         @for (int j = 0; j < 2; j++)
         {
-            <a class="newsLink" asp-action="SpecificNews" asp-route-id="@modelList[j+i].NewsID">
+            <a class="newsLink" asp-action="SpecificNews" asp-route-id="@modelList[j + i].NewsID">
                 <div class="col-md-6 newsStyle">
-                    <h3>@Html.Raw(modelList[j + i].Title)</h3>
-                    <img src="@modelList[j+i].imgURL" alt="NewsIMG" class="img-responsive center-block img-rounded newIMG">
+
+
+                    <img src="@modelList[j + i].imgURL" alt="NewsIMG" class="img-responsive center-block newIMG">
+                    <div id="headlineblock">
+                        <p id="headline">@Html.Raw(modelList[j + i].Title)</p>
+                        <p id="subheadline">@Html.Raw(modelList[j + i].subtitle)</p>
+                        <p id="headlineauthor"> Skrevet af admin: @Html.Raw(modelList[j + i].CreateDate)</p>
+                        <div id="readmore">
+                            <span >Læs mere</span>
+
+                        </div>
+                    </div>
                     <br />
-                    <strong>@Html.Raw(modelList[j + i].subtitle)</strong>
                 </div>
             </a>
             @if (j + 1 + i >= modelList.Count())
-            {
-                break;
-            }
+                    {
+                        break;
+                    }
         }
     </div>
     <hr />
-
+    @*<div class="row text-center">
+            @for (int j = 0; j < 2; j++)
+            {
+                <a class="newsLink" asp-action="SpecificNews" asp-route-id="@modelList[j + i].NewsID">
+                    <div class="col-md-6 newsStyle">
+                        <h3>@Html.Raw(modelList[j + i].Title)</h3>
+                        <img src="@modelList[j + i].imgURL" alt="NewsIMG" class="img-responsive center-block img-rounded newIMG">
+                        <br />
+                        <strong>@Html.Raw(modelList[j + i].subtitle)</strong>
+                    </div>
+                </a>
+                @if (j + 1 + i >= modelList.Count())
+                {
+                    break;
+                }
+            }
+        </div>
+        <hr />*@
 }
+
+

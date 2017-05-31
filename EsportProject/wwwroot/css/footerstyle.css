@@ -1,5 +1,5 @@
 ﻿footer {
-    background-color: #336350;
+    background-color: #021533;
     color: white;
     opacity: 0.9;
     text-align: center;
@@ -13,7 +13,8 @@
 }
 
     .footernav > li > a:hover {
-        color: black;
+        color: white;
+        opacity:0.2;
     }
 
     .footernav > li > a {
