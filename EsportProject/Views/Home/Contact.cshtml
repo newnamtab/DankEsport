@@ -35,15 +35,15 @@
         <form asp-controller="Home" asp-action="Contact" method="post">
            
                 <label>First Name</label>
-                <input asp-for="FirstName" placeholder="Your name.." />
+                <input id="contacttextfield" asp-for="FirstName" placeholder="Your name.." />
                 <label>Last Name</label>
-                <input asp-for="LastName" placeholder="Your last name.." />
+                <input id="contacttextfield" asp-for="LastName" placeholder="Your last name.." />
                 <label>E-mail adress</label>
-                <input asp-for="EmailAdress" placeholder="Your E-Mail adress.." />
+                <input id="contacttextfield" asp-for="EmailAdress" placeholder="Your E-Mail adress.." />
                 <br />
                 <label>Subject</label>
-                <textarea asp-for="Message" placeholder="Write something.." style="height:200px"></textarea>
-                <button type="submit">DO IT</button>
+                <textarea id="textareacontact" asp-for="Message" placeholder="Write something.." style="height:200px"></textarea>
+                <button id="submitcontact" type="submit">DO IT</button>
         </form>
     </div>
 
