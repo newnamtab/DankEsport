@@ -10,8 +10,13 @@ namespace EsportProject.Classes
         public static string SanitizeText(string stringToSanitize)
         {
 
-            string sanitizedString = System.Text.RegularExpressions.Regex.Replace(stringToSanitize, "<script>", "", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-            
+            //string sanitizedString = System.Text.RegularExpressions.Regex.Replace(stringToSanitize, "<script>", "", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+
+            // REMOVES ALL "<>"-tags!!!
+            //string sanitizedString = System.Text.RegularExpressions.Regex.Replace(stringToSanitize, "<.*?>", String.Empty);
+            HtmlAgilityPack.HtmlDocument htmlDoc = new HtmlAgilityPack.HtmlDocument();
+            htmlDoc.LoadHtml(stringToSanitize);
+            string sanitizedString = htmlDoc.DocumentNode.InnerText;
 
             return sanitizedString;
         }

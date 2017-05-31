@@ -15,12 +15,15 @@ namespace EsportProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly NewsContext _context;
+        private readonly ContactContext _conContext;
 
-        public HomeController(ILogger<HomeController> logger, NewsContext context)
+        public HomeController(ILogger<HomeController> logger, NewsContext context, ContactContext concontext)
         {
             _logger = logger;
             _context = context;
+            _conContext = concontext;
         }
+        
         public IActionResult Index()
         {
             _logger.LogInformation("Index/Home page logged");
@@ -76,7 +79,7 @@ namespace EsportProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult Contact(Models.EmailContact contact)
+        public async Task<IActionResult> Contact(Models.EmailContact contact)
         {
             Models.EmailContact tempCon = new Models.EmailContact();
 
@@ -89,6 +92,7 @@ namespace EsportProject.Controllers
             string ToAdressTitle = "Microsoft ASP.NET Core";
             string Subject = "New Contact";
             string BodyContent = contact.FirstName + " " + contact.LastName + Environment.NewLine + contact.EmailAdress + " har indgivet en henvendelse:" + Environment.NewLine + contact.Message;
+            BodyContent = Classes.Sanitizer.SanitizeText(BodyContent);
 
             //Smtp Server
             string SmtpServer = "send.one.com";
@@ -107,7 +111,6 @@ namespace EsportProject.Controllers
 
             using (var client = new SmtpClient())
             {
-
                 client.Connect(SmtpServer, SmtpPortNumber, false);
                 // Note: only needed if the SMTP server requires authentication
                 // Error 5.5.1 Authentication 
@@ -115,8 +118,13 @@ namespace EsportProject.Controllers
                 client.Send(mimeMessage);
                 client.Disconnect(true);
                 tempCon.Info = "The mail was sent succesfully";
-
             }
+            Models.DBmodels.Contact con = new Contact();
+            con.Contactmailadress = contact.EmailAdress;
+            con.CreateDate = DateTime.Now;
+            con.Message = BodyContent;
+            _conContext.Add(con);
+            await _conContext.SaveChangesAsync();
             ModelState.Clear();
 
             return View(tempCon);

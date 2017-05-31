@@ -10,3 +10,21 @@
     display: inline-block; /*Det vender links vertikalt, så de er på række*/
     padding: 0 25px 0 25px; /*top - left - bot - right.. dette spreder menuen ud*/
 }
+.newsLink:visited, .newsLink:link {
+    color: black;
+}
+
+.newsLink:hover {
+    color: black;
+    opacity: 0.8;
+}
+.newsStyle {
+    outline: 15px solid lightgrey;
+    background-color: #336350;
+    height: 376px;
+    padding: 15px;
+}
+.newIMG {
+    height:250px;
+    width:auto;
+}
