@@ -20,12 +20,35 @@ namespace EsportProject.Controllers
             _signInManager = signInManager;
 
         }
-
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(Login log)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(log.Email, log.Password, log.RememberMe, false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid Login Attempt");
+                }
+                return View(log);
+            }
+            return View(log);
+        }
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Register(Register reg)
         {
