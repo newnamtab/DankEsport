@@ -21,6 +21,8 @@ namespace EsportProject.Controllers.TurnamentControllers
         // GET: TeamStandings
         public async Task<IActionResult> Index()
         {
+            await _context.Team.ToListAsync();
+            await _context.Turnament.ToListAsync();
             return View(await _context.TeamStanding.ToListAsync());
         }
 
