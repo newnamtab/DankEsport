@@ -14,6 +14,8 @@ using EsportProject.Models.DBmodels;
 using Microsoft.EntityFrameworkCore;
 using EsportProject.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using EsportProject.Classes;
+using Microsoft.AspNetCore.Identity;
 
 namespace EsportProject
 {
@@ -39,9 +41,14 @@ namespace EsportProject
             services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
             services.AddMvc();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(
+                options => {
+                    options.Cookies.ApplicationCookie.LoginPath = "/Account/Login";
+                    options.Cookies.ApplicationCookie.AccessDeniedPath = "/Home/Index";
+                })
                 .AddEntityFrameworkStores<UserContext>()
                 .AddDefaultTokenProviders();
+                
             //DBconnection
             var connection = @"Server=mysql34.unoeuro.com;User Id=cronen_dk;Password=testyv92;Database=cronen_dk_db";
             services.AddDbContext<NewsContext>(options => options.UseMySql(connection));
@@ -78,6 +85,8 @@ namespace EsportProject
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            new UserRoleSeed(app.ApplicationServices.GetService<RoleManager<IdentityRole>>()).Seed();
         }
     }
 }
