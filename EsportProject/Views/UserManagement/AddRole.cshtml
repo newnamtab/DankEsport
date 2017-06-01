@@ -1,0 +1,15 @@
+﻿@model EsportProject.Models.UserManagement
+
+<h3>Add Role for @Model.Email</h3>
+<div asp-validation-summary="All"></div>
+<form asp-controller="UserManagement" asp-action="AddRole">
+    <input asp-for="UserID" type="hidden"/>
+    <select asp-for="NewRole">
+        @foreach (var role in Model.Rolelist)
+        {
+            <option value="@role">@role.Name</option>
+        }
+    </select>
+    <input type="submit" value="Add Role"/>
+
+</form>
