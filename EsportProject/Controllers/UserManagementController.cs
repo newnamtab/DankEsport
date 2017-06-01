@@ -42,7 +42,7 @@ namespace EsportProject.Controllers
             var user = await GetUserByID(id);
             var vm = new UserManagement
             {
-                Rolelist = _roleManager.Roles.OrderBy(r => r.Name).ToList(),
+                Rolelist = GetAllRoles(),
                 UserID = id,
                 Email = user.Email
             };
@@ -65,7 +65,8 @@ namespace EsportProject.Controllers
                     ModelState.AddModelError(error.Code, error.Description);
                 }
             }
-            //UM.Email = ARuser.Email; // Hvis modelstate ikke er valid, så får vi stadig Emailen ud i view, så man ved hvem der arbejdes på. 
+            UM.Rolelist = GetAllRoles();
+            UM.Email = ARuser.Email; // Hvis modelstate ikke er valid, så får vi stadig Emailen ud i view, så man ved hvem der arbejdes på. 
             return View(UM);
 
         }
@@ -73,5 +74,6 @@ namespace EsportProject.Controllers
         {
             return await _userManager.FindByIdAsync(id);
         }
+        private SelectList GetAllRoles() => new SelectList(_roleManager.Roles.OrderBy(r => r.Name));
     }
 }

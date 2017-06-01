@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace EsportProject.Models
 
         public string UserID { get; set; }
         public string NewRole { get; set; }
-        public List<IdentityRole> Rolelist { get; set; }
+        public IEnumerable<SelectListItem> Rolelist { get; set; }
         public string Email { get; set; }
     }
 }
