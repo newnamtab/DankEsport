@@ -65,15 +65,15 @@ namespace EsportProject.Controllers
                     ModelState.AddModelError(error.Code, error.Description);
                 }
             }
-            UM.Rolelist = GetAllRoles();
+            UM.Rolelist = GetAllRoles(); // Hvis modelstate ikke er valid, så får vi stadig rollen i dropdown. 
             UM.Email = ARuser.Email; // Hvis modelstate ikke er valid, så får vi stadig Emailen ud i view, så man ved hvem der arbejdes på. 
-            return View(UM);
+            return View(UM); 
 
         }
         private async Task<ApplicationUser> GetUserByID(string id) //Helper Mefef til at finde ting på en bruger
         {
             return await _userManager.FindByIdAsync(id);
         }
-        private SelectList GetAllRoles() => new SelectList(_roleManager.Roles.OrderBy(r => r.Name));
+        private SelectList GetAllRoles() => new SelectList(_roleManager.Roles.OrderBy(r => r.Name)); 
     }
 }
