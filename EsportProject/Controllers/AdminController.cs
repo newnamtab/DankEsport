@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace EsportProject.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly UserContext _context;
