@@ -48,7 +48,7 @@
                             <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
                             <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
                             <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                            <li><a asp-area="" asp-controller="Account" asp-action="Login">Log out</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="Logout">Log out</a></li>
                         </ul>
 
                     @if (User.Identity.IsAuthenticated)
@@ -63,7 +63,7 @@
                                 <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
                                 <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                                 <li><a asp-area="" asp-controller="Admin" asp-action="Actions">Adminpage</a></li>
-                                <li><a asp-area="" asp-controller="Account" asp-action="Login">Log out</a></li>
+                                <li><a asp-area="" asp-controller="Account" asp-action="Logout">Log out</a></li>
                             </ul>
                         }
                     }
@@ -106,9 +106,9 @@
                 <div class="col-md-4">
                     <h3>Follow us on</h3>
                     <ul class="social-network social-circle">
-                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://www.facebook.com/krippofficial/" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/kripparrian" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/thomas-larsen-b55103117/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
                     </ul>		
                 </div>
                 <div class="col-md-4">
