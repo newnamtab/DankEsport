@@ -29,6 +29,11 @@
 #specificnewscontent {
     font-size:15px;
 }
-#linkback {
-    
+
+#backbtn {
+    color: black;
+    width: 150px;
+    height: 60px;
+    font-style: italic;
+    font-weight: bold;
 }

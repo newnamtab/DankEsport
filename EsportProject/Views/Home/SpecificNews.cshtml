@@ -21,12 +21,13 @@
             </div>
             <div id="specificnewscontent">
                 @Html.Raw(Model.Content)
+                <input id="backbtn" type="button" value="Back to news" onclick="location.href='@Url.Action("News", "Home")'" />
+
             </div>
         </div>
+
     </div>
-    <div>
-        <a id="linkback" asp-action="News">Tilbage</a>
-    </div>
+
 </div>
 
 
