@@ -33,7 +33,7 @@ namespace EsportProject.Controllers
             {
                 Users = _dbContext.Users.OrderBy(u => u.Email).Include(u => u.Roles).ToList() 
             };
-
+            vm.Rolelist = GetAllRoles();
             return View(vm);
         }
         [HttpGet]

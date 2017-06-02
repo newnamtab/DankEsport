@@ -37,12 +37,12 @@ namespace EsportProject.Controllers
         }
 
 
-        public IActionResult Teams()
+        public async Task<IActionResult> Teams()
         {
             _logger.LogInformation("Team page logged");
-            return View();
+            List<Team> TeamList = await _Tourcontext.Team.ToListAsync();
+            return View(TeamList);
         }
-        //[HttpPost]
         public async Task<IActionResult> Tournaments(int? id)
         {
             await _Tourcontext.Team.ToListAsync();
