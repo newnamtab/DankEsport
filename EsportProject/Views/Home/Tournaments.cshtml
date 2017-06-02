@@ -7,6 +7,19 @@
 <center>
     <h1>Tournaments</h1>
 </center>
+<form asp-controller="Home" asp-action="Tournaments" method="get">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <select name ="id" class="form-control" title="Choose Tournament" onchange="this.form.submit();">
+                <option value="" disabled selected hidden>Choose Tournament</option>
+                @foreach (EsportProject.Models.DBmodels.Turnament tur in Model.TournamentList)
+                {
+                    <option value="@tur.TurnamentID">@tur.Name</option>
+                }
+            </select>
+        </div>
+    </div>
+</form>
 <div class="row">
     <div class="col-md-1">
     </div>
@@ -35,8 +48,7 @@
         </div>
     </div>
 </div>
-
-<div class="row">
+@*<div class="row">
     <div class="col-md-4">
         <h4>Choose tournament:</h4>
         <select>
@@ -59,4 +71,4 @@
 
         </div>
     </div>
-</div>
+</div>*@
