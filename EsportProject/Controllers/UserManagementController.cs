@@ -70,10 +70,62 @@ namespace EsportProject.Controllers
             return View(UM); 
 
         }
+
+        [HttpGet]
+        public async Task<IActionResult> RemoveRole(string id)
+        {
+            var user = await GetUserByID(id);
+            var vm = new UserManagement
+            {
+                Rolelist = await getUserRoles(user.Id),
+                UserID = id,
+                Email = user.Email
+            };
+            return View(vm);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveRole(UserManagement UM)
+        {
+            var ARuser = await GetUserByID(UM.UserID);
+
+            if (ModelState.IsValid)
+            {
+                //var result = await _userManager.AddToRoleAsync(ARuser, UM.NewRole);
+                var result = await _userManager.RemoveFromRoleAsync(ARuser,UM.NewRole);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(error.Code, error.Description);
+                }
+            }
+            UM.Rolelist = GetAllRoles(); // Hvis modelstate ikke er valid, så får vi stadig rollen i dropdown. 
+            UM.Email = ARuser.Email; // Hvis modelstate ikke er valid, så får vi stadig Emailen ud i view, så man ved hvem der arbejdes på. 
+            return View(UM);
+
+        }
+
         private async Task<ApplicationUser> GetUserByID(string id) //Helper Mefef til at finde ting på en bruger
         {
             return await _userManager.FindByIdAsync(id);
         }
-        private SelectList GetAllRoles() => new SelectList(_roleManager.Roles.OrderBy(r => r.Name)); 
+        private SelectList GetAllRoles() => new SelectList(_roleManager.Roles.OrderBy(r => r.Name));
+
+      
+       private async Task<SelectList> getUserRoles(string id)
+        {
+          var tempuser = _userManager.FindByIdAsync(id);
+          ApplicationUser user = await tempuser;
+
+          var temproles =  _userManager.GetRolesAsync(user);
+          IList<string> roles = await temproles;
+          
+          return new SelectList(roles);
+
+        }
     }
 }

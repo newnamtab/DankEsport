@@ -8,9 +8,12 @@ using MailKit.Net.Smtp;
 using MimeKit;
 using EsportProject.Models.DBmodels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EsportProject.Controllers
 {
+    //[Authorize(Roles = "Admin")]
+    //[AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -23,7 +26,6 @@ namespace EsportProject.Controllers
             _context = context;
             _conContext = concontext;
         }
-        
         public IActionResult Index()
         {
             _logger.LogInformation("Index/Home page logged");
@@ -78,6 +80,7 @@ namespace EsportProject.Controllers
             return View(tempCon);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Contact(Models.EmailContact contact)
         {
