@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<EsportProject.Models.DBmodels.Team>
+
+@{
     ViewData["Title"] = "Teams Page";
 }
 
@@ -9,7 +11,7 @@
 <div class="row">
     
     <div id="teamselect" class="col-md-4">
-        <h4>Choose tournament:</h4>
+        <h4>Choose game:</h4>
         <select>
             <option value="Counterstrike">Counterstrike</option>
             <option value="Leagueoflegends">League of Legends</option>
@@ -24,33 +26,56 @@
     </div>
 </div>
 <br />
-<div class="row">
-    <div class="col-md-3">
-        <img src="~/images/Placehold.jpg" class="img-responsive" />
-    </div>
-    <div class="col-md-3">
-        <img src="~/images/Placehold.jpg" class="img-responsive" />
-    </div>
-    <div class="col-md-3">
-        <img src="~/images/Placehold.jpg" class="img-responsive" />
-    </div>
-    <div class="col-md-3">
-        <img src="~/images/Placehold.jpg" class="img-responsive" />
-    </div>
-</div>
-<br />
 
-<div class="row">
-    <div class="col-md-3">
-        <img src="~/images/Placehold.jpg" class="img-responsive" />
+@for (int i = 0; i < Model.Count(); i += 4)
+{
+    <div id="newsobject" class="row text-center">
+        @for (int j = 0; j < 4; j++)
+        {
+            <div class="col-md-3 newsStyle">
+                <img src="~/images/TeamPlaceHolder.jpg" class="img-responsive"/>
+                <div id="headlineblock">
+                    <p id="headline">@Model[j + i].Name</p>
+                </div>
+                <br />
+            </div>
+                @if (j + 1 + i >= Model.Count())
+                    {
+                        break;
+                    }
+        }
     </div>
-    <div class="col-md-3">
-        <img src="~/images/Placehold.jpg" class="img-responsive" />
-    </div>
-    <div class="col-md-3">
-        <img src="~/images/Placehold.jpg" class="img-responsive" />
-    </div>
-    <div class="col-md-3">
-        <img src="~/images/Placehold.jpg" class="img-responsive" />
-    </div>
-</div>
+}
+
+
+
+        @*<div class="row">
+                <div class="col-md-3">
+                    <img src="~/images/Placehold.jpg" class="img-responsive" />
+                </div>
+                <div class="col-md-3">
+                    <img src="~/images/Placehold.jpg" class="img-responsive" />
+                </div>
+                <div class="col-md-3">
+                    <img src="~/images/Placehold.jpg" class="img-responsive" />
+                </div>
+                <div class="col-md-3">
+                    <img src="~/images/Placehold.jpg" class="img-responsive" />
+                </div>
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="~/images/Placehold.jpg" class="img-responsive" />
+                </div>
+                <div class="col-md-3">
+                    <img src="~/images/Placehold.jpg" class="img-responsive" />
+                </div>
+                <div class="col-md-3">
+                    <img src="~/images/Placehold.jpg" class="img-responsive" />
+                </div>
+                <div class="col-md-3">
+                    <img src="~/images/Placehold.jpg" class="img-responsive" />
+                </div>
+            </div>*@
