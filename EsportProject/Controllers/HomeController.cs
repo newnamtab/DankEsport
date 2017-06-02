@@ -25,7 +25,7 @@ namespace EsportProject.Controllers
             _conContext = concontext;
             _Tourcontext = Tcontext;
         }
-        
+
         public IActionResult Index()
         {
             _logger.LogInformation("Index/Home page logged");
@@ -41,16 +41,24 @@ namespace EsportProject.Controllers
             _logger.LogInformation("Team page logged");
             return View();
         }
-
-        public async Task<IActionResult> Tournaments()
+        //[HttpPost]
+        public async Task<IActionResult> Tournaments(int? id)
         {
-            _logger.LogInformation("Tournament page logged");
             await _Tourcontext.Team.ToListAsync();
             List<Turnament> turnamentList = await _Tourcontext.Turnament.ToListAsync();
             List<TeamStanding> TSList = await _Tourcontext.TeamStanding.ToListAsync();
-            //List<TeamStanding> sortedTSlist = TSList.OrderByDescending(o => o.Points()).ToList();
-            //List<TeamStanding> DIffsortedTSlist = TSList.OrderBy(o => o.Points()).ToList();
-            Models.TournamentViewModel VM = new Models.TournamentViewModel(turnamentList[0]);
+            Models.TournamentViewModel VM;
+            if (id == null)
+            {
+                id = 0;
+                VM = new Models.TournamentViewModel(turnamentList[0], turnamentList);
+            }
+            else
+            {
+                VM = new Models.TournamentViewModel(turnamentList.Find(x => x.TurnamentID == id), turnamentList);
+            }
+            _logger.LogInformation("Tournament page logged, ID request: " + id);
+
             foreach (TeamStanding ts in TSList)
             {
                 if (VM.tournament == ts.Turnament)
