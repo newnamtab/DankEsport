@@ -1,10 +1,40 @@
-﻿@{
+﻿@model EsportProject.Models.TournamentViewModel
+
+@{
     ViewData["Title"] = "Tournament Page";
 }
 
 <center>
     <h1>Tournaments</h1>
 </center>
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div id="frontranktable" class="col-md-10">
+        <table id="fronttable" class="table-responsive table-striped">
+            <tr>
+                <th>@Model.tournament.Name</th>
+            </tr>
+            <tr>
+                <th>Team:</th>
+                <th>Matches:</th>
+                <th>Points:</th>
+            </tr>
+            @for (int i = 0; i < Model.TeamList.Count(); i++)
+            {
+                <tr>
+                    <td>@(i + 1): @Html.DisplayFor(modelItem => Model.TeamList[i].Team.Name)</td>
+                    <td>@Html.DisplayFor(modelitem => Model.TeamList[i].totalMatches)</td>
+                    <td>@Html.DisplayFor(modelitem => Model.TeamList[i].Points)</td>
+
+                </tr>
+            }
+
+        </table>
+        <div class="col-md-1">
+        </div>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-md-4">
@@ -25,8 +55,8 @@
 
     </div>
     <div class="col-md-8">
-       <div>
+        <div>
 
-       </div>
+        </div>
     </div>
 </div>
