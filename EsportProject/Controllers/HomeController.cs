@@ -8,6 +8,7 @@ using MailKit.Net.Smtp;
 using MimeKit;
 using EsportProject.Models.DBmodels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EsportProject.Controllers
 {
@@ -102,7 +103,7 @@ namespace EsportProject.Controllers
 
             return View(tempCon);
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Contact(Models.EmailContact contact)
         {
