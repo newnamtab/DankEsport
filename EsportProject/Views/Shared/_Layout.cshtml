@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - EsportProject</title>
-    <link rel="shortcut icon" type="image/png" href="~/lib/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="~/lib/favicon.ico" />
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="~/css/contactstyle.css" />
         <link rel="stylesheet" href="~/css/footerstyle.css" />
         <link rel="stylesheet" href="~/css/fronttablestyle.css" />
-        <link rel="stylesheet" href="~/css/navstyle.css"/>
+        <link rel="stylesheet" href="~/css/navstyle.css" />
         <link rel="stylesheet" href="~/css/tournamentstyle.css" />
         <link rel="stylesheet" href="~/css/SpecificNews.css" />
         <link rel="stylesheet" href="~/css/Register.css" />
@@ -29,15 +29,47 @@
 </head>
 <body>
     <div style="background-color:black;">
-        <img id="frontheader" src="~/images/HeaderIMG.png" alt="Visual Studio" class="img-responsive" style="padding-top:5px;"/>
+        <img id="frontheader" src="~/images/HeaderIMG.png" alt="Visual Studio" class="img-responsive" style="padding-top:5px;" />
     </div>
     <header>
-            <nav>
-                <a class="burger-nav">
-                    <div>
-                        <img id="mobilenavlogo" src="~/images/DANKRANK.png" />
-                    </div>
-                </a>
+        <nav>
+            <a class="burger-nav">
+                <div>
+                    <img id="mobilenavlogo" src="~/images/DANKRANK.png" />
+                </div>
+            </a>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <ul class="nav">
+                    <li><a id="desknavlogo" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/DANKRANK.png" /></a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="Logout">Log out</a></li>
+                </ul>
+
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Admin"))
+                    {
+                        <ul class="nav">
+                            <li><a id="desknavlogo" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/DANKRANK.png" /></a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                            <li><a asp-area="" asp-controller="Admin" asp-action="Actions">Adminpage</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="Logout">Log out</a></li>
+                        </ul>
+                    }
+                }
+            }
+            else
+            {
                 <ul class="nav">
                     <li><a id="desknavlogo" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/DANKRANK.png" /></a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
@@ -48,43 +80,114 @@
                     <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
                     <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
                 </ul>
-            </nav>
+            }
+        </nav>
     </header>
-            
+
+
     <div class="container">
         @RenderBody()
         <hr />
         <footer>
-            <div class="row">
-                <div class="col-md-4">
-                    <h3>Pages:</h3>
-                    <ul class="footernav">
-                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-                        <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
-                    </ul>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Pages:</h3>
+                        <ul class="footernav">
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="Logout">Log out</a></li>
+                        </ul>
 
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Follow us on</h3>
+                        <ul class="social-network social-circle">
+                            <li><a href="https://www.facebook.com/krippofficial/" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/kripparrian" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/thomas-larsen-b55103117/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Contact info:</h3>
+                        <h4>CVR: 0000005</h4>
+                        <h4>Adress: Lolvej.dk</h4>
+                        <h4>Tlf: 66554433</h4>
+                        <h4>Mail: Sodoff@hotgirl.com</h4>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <h3>Follow us on</h3>
-                    <ul class="social-network social-circle">
-                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>		
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3>Pages:</h3>
+                            <ul class="footernav">
+                                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                                <li><a asp-area="" asp-controller="Account" asp-action="Logout">Log out</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="col-md-4">
+                            <h3>Follow us on</h3>
+                            <ul class="social-network social-circle">
+                                <li><a href="https://www.facebook.com/krippofficial/" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/kripparrian" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/thomas-larsen-b55103117/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>Contact info:</h3>
+                            <h4>CVR: 0000005</h4>
+                            <h4>Adress: Lolvej.dk</h4>
+                            <h4>Tlf: 66554433</h4>
+                            <h4>Mail: Sodoff@hotgirl.com</h4>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Pages:</h3>
+                        <ul class="footernav">
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
+                        </ul>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Follow us on</h3>
+                        <ul class="social-network social-circle">
+                            <li><a href="https://www.facebook.com/krippofficial/" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/kripparrian" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/thomas-larsen-b55103117/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Contact info:</h3>
+                        <h4>CVR: 0000005</h4>
+                        <h4>Adress: Lolvej.dk</h4>
+                        <h4>Tlf: 66554433</h4>
+                        <h4>Mail: Sodoff@hotgirl.com</h4>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <h3>Contact info:</h3>
-                    <h4>CVR: 0000005</h4>
-                    <h4>Adress: Lolvej.dk</h4>
-                    <h4>Tlf: 66554433</h4>
-                    <h4>Mail: Sodoff@hotgirl.com</h4>
-                </div>
-            </div>
+            }
+               
+             
             <p>&copy; 2017 - EsportProject - Made by DankBoyz</p>
         </footer>
     </div>

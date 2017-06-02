@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EsportProject.Models.DBmodels;
-
+using EsportProject.Models;
 
 namespace EsportProject.Controllers.TurnamentControllers
 {
@@ -47,15 +47,8 @@ namespace EsportProject.Controllers.TurnamentControllers
         // GET: TeamStandings/Create
         public IActionResult Create()
         {
-            List<Team> teamList = _context.Team
-                                    .FromSql("SELECT * FROM Team")
-                                    .ToList();
-            List<Turnament> TurnamentList = _context.Turnament
-                                    .FromSql("SELECT * FROM Turnament")
-                                    .ToList();
-            ViewData["teams"] = teamList;
-            ViewData["turnament"] = TurnamentList;
-            return View();
+            TeamTurnamentVM VM = new TeamTurnamentVM(_context);
+            return View(VM);
         }
 
         // POST: TeamStandings/Create
@@ -157,6 +150,49 @@ namespace EsportProject.Controllers.TurnamentControllers
         private bool TeamStandingExists(int id)
         {
             return _context.TeamStanding.Any(e => e.TeamStandingID == id);
+        }
+        [HttpPost]
+        public IActionResult NewCreate()
+        {
+            Team team = GetTeamFromID(int.Parse(Request.Form["Team"]));
+            Turnament tournament = GetTournamentFromID(int.Parse(Request.Form["Turnament"]));
+            TeamStanding teamStanding = new TeamStanding();
+            if (team != null && tournament != null)
+            {
+                teamStanding.Team = team;
+                teamStanding.Turnament = tournament;
+                teamStanding.WonMatches = 0;
+                teamStanding.drawMatches = 0;
+                teamStanding.LostMatches = 0;
+                _context.Add(teamStanding);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Create");
+        }
+        private Team GetTeamFromID(int ID)
+        {
+            List<Team> teamlist = _context.Team.ToList() as List<Team>;
+            foreach (Team tm in teamlist)
+            {
+                if (tm.TeamID == ID)
+                {
+                    return tm;
+                }
+            }
+            return null;
+        }
+        private Turnament GetTournamentFromID(int ID)
+        {
+            List<Turnament> TurnList = _context.Turnament.ToList() as List<Turnament>;
+            foreach (Turnament tur in TurnList)
+            {
+                if (tur.TurnamentID == ID)
+                {
+                    return tur;
+                }
+            }
+            return null;
         }
     }
 }

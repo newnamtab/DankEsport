@@ -8,24 +8,24 @@ using MailKit.Net.Smtp;
 using MimeKit;
 using EsportProject.Models.DBmodels;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
 
 namespace EsportProject.Controllers
 {
-    //[Authorize(Roles = "Admin")]
-    //[AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly NewsContext _context;
+        private readonly TurnamentContext _Tourcontext;
         private readonly ContactContext _conContext;
 
-        public HomeController(ILogger<HomeController> logger, NewsContext context, ContactContext concontext)
+        public HomeController(ILogger<HomeController> logger, NewsContext context, ContactContext concontext, TurnamentContext Tcontext)
         {
             _logger = logger;
             _context = context;
             _conContext = concontext;
+            _Tourcontext = Tcontext;
         }
+
         public IActionResult Index()
         {
             _logger.LogInformation("Index/Home page logged");
@@ -41,11 +41,34 @@ namespace EsportProject.Controllers
             _logger.LogInformation("Team page logged");
             return View();
         }
-
-        public IActionResult Tournaments()
+        //[HttpPost]
+        public async Task<IActionResult> Tournaments(int? id)
         {
-            _logger.LogInformation("Tournament page logged");
-            return View();
+            await _Tourcontext.Team.ToListAsync();
+            List<Turnament> turnamentList = await _Tourcontext.Turnament.ToListAsync();
+            List<TeamStanding> TSList = await _Tourcontext.TeamStanding.ToListAsync();
+            Models.TournamentViewModel VM;
+            if (id == null)
+            {
+                id = 0;
+                VM = new Models.TournamentViewModel(turnamentList[0], turnamentList);
+            }
+            else
+            {
+                VM = new Models.TournamentViewModel(turnamentList.Find(x => x.TurnamentID == id), turnamentList);
+            }
+            _logger.LogInformation("Tournament page logged, ID request: " + id);
+
+            foreach (TeamStanding ts in TSList)
+            {
+                if (VM.tournament == ts.Turnament)
+                {
+                    VM.TeamList.Add(new Models.TeamPointsVM(ts));
+                }
+            }
+            List<Models.TeamPointsVM> sortedTeamlist = VM.TeamList.OrderByDescending(o => o.Points).ToList();
+            VM.TeamList = sortedTeamlist;
+            return View(VM);
         }
 
         public IActionResult News()
@@ -80,7 +103,6 @@ namespace EsportProject.Controllers
             return View(tempCon);
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Contact(Models.EmailContact contact)
         {
