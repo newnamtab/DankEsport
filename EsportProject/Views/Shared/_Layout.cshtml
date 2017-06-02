@@ -89,105 +89,29 @@
         @RenderBody()
         <hr />
         <footer>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <div class="row">
-                    <div class="col-md-4">
-                        <h3>Pages:</h3>
-                        <ul class="footernav">
-                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                            <li><a asp-area="" asp-controller="Account" asp-action="Logout">Log out</a></li>
-                        </ul>
 
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Follow us on</h3>
-                        <ul class="social-network social-circle">
-                            <li><a href="https://www.facebook.com/krippofficial/" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://twitter.com/kripparrian" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="https://www.linkedin.com/in/thomas-larsen-b55103117/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Contact info:</h3>
-                        <h4>CVR: 0000005</h4>
-                        <h4>Adress: Lolvej.dk</h4>
-                        <h4>Tlf: 66554433</h4>
-                        <h4>Mail: Sodoff@hotgirl.com</h4>
-                    </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/DANKRANK.png" /></a>
+
                 </div>
-                @if (User.IsInRole("Admin"))
-                {
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h3>Pages:</h3>
-                            <ul class="footernav">
-                                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                                <li><a asp-area="" asp-controller="Account" asp-action="Logout">Log out</a></li>
-                            </ul>
-
-                        </div>
-                        <div class="col-md-4">
-                            <h3>Follow us on</h3>
-                            <ul class="social-network social-circle">
-                                <li><a href="https://www.facebook.com/krippofficial/" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://twitter.com/kripparrian" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="https://www.linkedin.com/in/thomas-larsen-b55103117/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <h3>Contact info:</h3>
-                            <h4>CVR: 0000005</h4>
-                            <h4>Adress: Lolvej.dk</h4>
-                            <h4>Tlf: 66554433</h4>
-                            <h4>Mail: Sodoff@hotgirl.com</h4>
-                        </div>
-                    </div>
-                }
-            }
-            else
-            {
-                <div class="row">
-                    <div class="col-md-4">
-                        <h3>Pages:</h3>
-                        <ul class="footernav">
-                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="News">News</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Tournaments">Tournaments</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Teams">Teams</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                            <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
-                            <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
-                        </ul>
-
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Follow us on</h3>
-                        <ul class="social-network social-circle">
-                            <li><a href="https://www.facebook.com/krippofficial/" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://twitter.com/kripparrian" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="https://www.linkedin.com/in/thomas-larsen-b55103117/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Contact info:</h3>
-                        <h4>CVR: 0000005</h4>
-                        <h4>Adress: Lolvej.dk</h4>
-                        <h4>Tlf: 66554433</h4>
-                        <h4>Mail: Sodoff@hotgirl.com</h4>
-                    </div>
+                <div class="col-md-4">
+                    <h3>Follow us on</h3>
+                    <ul class="social-network social-circle">
+                        <li><a href="https://www.facebook.com/krippofficial/" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/kripparrian" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/thomas-larsen-b55103117/" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
                 </div>
-            }
-               
-             
+                <div class="col-md-4">
+                    <h3>Contact info:</h3>
+                    <h4>CVR: 0000005</h4>
+                    <h4>Adress: Lolvej.dk</h4>
+                    <h4>Tlf: 66554433</h4>
+                    <h4>Mail: Sodoff@hotgirl.com</h4>
+                </div>
+            </div>
+
             <p>&copy; 2017 - EsportProject - Made by DankBoyz</p>
         </footer>
     </div>
