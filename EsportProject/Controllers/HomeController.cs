@@ -15,13 +15,15 @@ namespace EsportProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly NewsContext _context;
+        private readonly TurnamentContext _Tourcontext;
         private readonly ContactContext _conContext;
 
-        public HomeController(ILogger<HomeController> logger, NewsContext context, ContactContext concontext)
+        public HomeController(ILogger<HomeController> logger, NewsContext context, ContactContext concontext, TurnamentContext Tcontext)
         {
             _logger = logger;
             _context = context;
             _conContext = concontext;
+            _Tourcontext = Tcontext;
         }
         
         public IActionResult Index()
@@ -40,10 +42,25 @@ namespace EsportProject.Controllers
             return View();
         }
 
-        public IActionResult Tournaments()
+        public async Task<IActionResult> Tournaments()
         {
             _logger.LogInformation("Tournament page logged");
-            return View();
+            await _Tourcontext.Team.ToListAsync();
+            List<Turnament> turnamentList = await _Tourcontext.Turnament.ToListAsync();
+            List<TeamStanding> TSList = await _Tourcontext.TeamStanding.ToListAsync();
+            //List<TeamStanding> sortedTSlist = TSList.OrderByDescending(o => o.Points()).ToList();
+            //List<TeamStanding> DIffsortedTSlist = TSList.OrderBy(o => o.Points()).ToList();
+            Models.TournamentViewModel VM = new Models.TournamentViewModel(turnamentList[0]);
+            foreach (TeamStanding ts in TSList)
+            {
+                if (VM.tournament == ts.Turnament)
+                {
+                    VM.TeamList.Add(new Models.TeamPointsVM(ts));
+                }
+            }
+            List<Models.TeamPointsVM> sortedTeamlist = VM.TeamList.OrderByDescending(o => o.Points).ToList();
+            VM.TeamList = sortedTeamlist;
+            return View(VM);
         }
 
         public IActionResult News()
