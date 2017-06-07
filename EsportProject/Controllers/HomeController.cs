@@ -80,6 +80,7 @@ namespace EsportProject.Controllers
         }
         public async Task<IActionResult> SpecificNews(int? id)
         {
+            _logger.LogInformation("SpecificNews page logged, id of news: " + id);
             if (id == null)
             {
                 return RedirectToAction("News", "Home");
@@ -109,6 +110,7 @@ namespace EsportProject.Controllers
         {
             Models.EmailContact tempCon = new Models.EmailContact();
 
+            ;
 
             //From Address
             string FromAddress = "mail@newnamtab.dk";
@@ -153,6 +155,7 @@ namespace EsportProject.Controllers
             await _conContext.SaveChangesAsync();
             ModelState.Clear();
 
+            _logger.LogInformation("User send request with mail " + FromAddress);
             return View(tempCon);
         }
 
