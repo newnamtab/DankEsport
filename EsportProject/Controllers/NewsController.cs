@@ -10,15 +10,19 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Net.Http.Headers;
+using Microsoft.Extensions.Logging;
 
 namespace EsportProject.Controllers
 {
     public class NewsController : Controller
     {
+        private readonly ILogger<NewsController> _logger;
+
         private readonly NewsContext _context;
         private IHostingEnvironment _environment;
-        public NewsController(NewsContext context, IHostingEnvironment environment)
+        public NewsController(ILogger<NewsController> logger, NewsContext context, IHostingEnvironment environment)
         {
+            _logger = logger;
             _context = context;
             _environment = environment;
         }
@@ -26,12 +30,16 @@ namespace EsportProject.Controllers
         // GET: News
         public async Task<IActionResult> Index()
         {
+            _logger.LogInformation("Index/News page logged");
+
             return View(await _context.News.ToListAsync());
         }
 
         // GET: News/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            _logger.LogInformation("User requested details of news with id " + id);
+
             if (id == null)
             {
                 return NotFound();
@@ -50,6 +58,7 @@ namespace EsportProject.Controllers
         // GET: News/Create
         public IActionResult Create()
         {
+            _logger.LogInformation("News/Create page logged");
             return View();
         }
 
@@ -74,6 +83,8 @@ namespace EsportProject.Controllers
                 file.CopyTo(fs);
                 fs.Flush();
             }
+            _logger.LogInformation("User created news with titel " + news.Title + "and uploaded image with path " + news.imgURL);
+
             //Code to update DB
             if (ModelState.IsValid)
             {
@@ -89,6 +100,8 @@ namespace EsportProject.Controllers
         // GET: News/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            _logger.LogInformation("User wants to edit news with id " + id);
+
             if (id == null)
             {
                 return NotFound();
@@ -113,6 +126,7 @@ namespace EsportProject.Controllers
             {
                 return NotFound();
             }
+            _logger.LogInformation("User edited news with id " + id);
 
             if (ModelState.IsValid)
             {
@@ -140,6 +154,8 @@ namespace EsportProject.Controllers
         // GET: News/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            _logger.LogInformation("Delete page logged");
+
             if (id == null)
             {
                 return NotFound();
@@ -160,6 +176,8 @@ namespace EsportProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            _logger.LogInformation("User deleted news with id " + id);
+
             var news = await _context.News.SingleOrDefaultAsync(m => m.NewsID == id);
             _context.News.Remove(news);
             await _context.SaveChangesAsync();
