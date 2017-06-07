@@ -165,5 +165,9 @@ namespace EsportProject.Controllers
             _logger.LogError("Error paged reached");
             return View();
         }
+        public IActionResult NotFound()
+        {
+            return View();
+        }
     }
 }

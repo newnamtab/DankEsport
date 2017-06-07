@@ -76,6 +76,7 @@ namespace EsportProject
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.UseStatusCodePagesWithRedirects("/Home/NotFound");
             app.UseIdentity();
             app.UseStaticFiles();
 
