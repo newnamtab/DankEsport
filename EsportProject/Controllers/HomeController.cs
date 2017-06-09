@@ -74,7 +74,7 @@ namespace EsportProject.Controllers
 
         public IActionResult News()
         {
-            IEnumerable<News> model = _context.News.ToList() as IEnumerable<News>;
+            IEnumerable<News> model = _context.News.OrderByDescending(d => d.CreateDate).ToList() as IEnumerable<News>;
             _logger.LogInformation("News page logged");
             return View(model);
         }
@@ -101,7 +101,6 @@ namespace EsportProject.Controllers
 
             Models.EmailContact tempCon = new Models.EmailContact();
 
-
             return View(tempCon);
         }
         [Authorize]
@@ -109,9 +108,7 @@ namespace EsportProject.Controllers
         public async Task<IActionResult> Contact(Models.EmailContact contact)
         {
             Models.EmailContact tempCon = new Models.EmailContact();
-
-            ;
-
+            
             //From Address
             string FromAddress = "mail@newnamtab.dk";
             string FromAdressTitle = "Dank E-Sport";
@@ -167,6 +164,7 @@ namespace EsportProject.Controllers
         }
         public IActionResult NotFound()
         {
+            _logger.LogError("404 page reached");
             return View();
         }
     }
