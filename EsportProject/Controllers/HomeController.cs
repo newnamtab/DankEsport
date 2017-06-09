@@ -101,7 +101,6 @@ namespace EsportProject.Controllers
 
             Models.EmailContact tempCon = new Models.EmailContact();
 
-
             return View(tempCon);
         }
         [Authorize]
@@ -109,9 +108,7 @@ namespace EsportProject.Controllers
         public async Task<IActionResult> Contact(Models.EmailContact contact)
         {
             Models.EmailContact tempCon = new Models.EmailContact();
-
-            ;
-
+            
             //From Address
             string FromAddress = "mail@newnamtab.dk";
             string FromAdressTitle = "Dank E-Sport";
@@ -167,6 +164,7 @@ namespace EsportProject.Controllers
         }
         public IActionResult NotFound()
         {
+            _logger.LogError("404 page reached");
             return View();
         }
     }
