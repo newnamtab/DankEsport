@@ -39,24 +39,6 @@
         }
     </div>
     <hr />
-    @*<div class="row text-center">
-            @for (int j = 0; j < 2; j++)
-            {
-                <a class="newsLink" asp-action="SpecificNews" asp-route-id="@modelList[j + i].NewsID">
-                    <div class="col-md-6 newsStyle">
-                        <h3>@Html.Raw(modelList[j + i].Title)</h3>
-                        <img src="@modelList[j + i].imgURL" alt="NewsIMG" class="img-responsive center-block img-rounded newIMG">
-                        <br />
-                        <strong>@Html.Raw(modelList[j + i].subtitle)</strong>
-                    </div>
-                </a>
-                @if (j + 1 + i >= modelList.Count())
-                {
-                    break;
-                }
-            }
-        </div>
-        <hr />*@
 }
 
 

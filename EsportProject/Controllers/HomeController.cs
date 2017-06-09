@@ -74,7 +74,7 @@ namespace EsportProject.Controllers
 
         public IActionResult News()
         {
-            IEnumerable<News> model = _context.News.ToList() as IEnumerable<News>;
+            IEnumerable<News> model = _context.News.OrderByDescending(d => d.CreateDate).ToList() as IEnumerable<News>;
             _logger.LogInformation("News page logged");
             return View(model);
         }
