@@ -74,8 +74,17 @@ namespace EsportProject.Controllers
 
         public IActionResult News()
         {
-            IEnumerable<News> model = _context.News.OrderByDescending(d => d.CreateDate).ToList() as IEnumerable<News>;
-            _logger.LogInformation("News page logged");
+            IEnumerable<News> model;
+            try
+            {
+                model = _context.News.OrderByDescending(d => d.CreateDate).ToList() as IEnumerable<News>;
+                _logger.LogInformation("News page logged");
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("error in getting news from DB",e);
+                return RedirectToAction("Error");
+            }
             return View(model);
         }
         public async Task<IActionResult> SpecificNews(int? id)
