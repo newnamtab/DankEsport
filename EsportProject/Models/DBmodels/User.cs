@@ -13,16 +13,17 @@ namespace EsportProject.Models.DBmodels
         public UserContext(DbContextOptions<UserContext> options)
             : base(options)
         { }
-        public DbSet<User> User { get; set; }
-    }
-    public class User
-    {
-        public int UserID { get; set; }
-        [Required]
-        public string Username { get; set; }
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-        public string Role { get; set; }
+        //    public DbSet<User> User { get; set; }
+        //}
+        //public class User
+        //{
+        //    public int UserID { get; set; }
+        //    [Required]
+        //    public string Username { get; set; }
+        //    [DataType(DataType.Password)]
+        //    public string Password { get; set; }
+        //    public string Role { get; set; }
 
+        //}
     }
 }
