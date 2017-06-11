@@ -22,25 +22,7 @@ namespace EsportProject.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Index(User UM)
-        {
-            List<User> userlist = _context.User.ToList() as List<User>;
-            if (ModelState.IsValid)
-            {
-                foreach (var user in userlist)
-                {
-                    if (user.Username == UM.Username && user.Password == UM.Password)
-                    {
-
-                        return View("Actions", "Admin");
-                    }
-                }
-            }
-            return View();
+            return RedirectToAction("Actions");
         }
 
         public IActionResult Actions()

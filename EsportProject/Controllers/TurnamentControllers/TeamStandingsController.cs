@@ -23,7 +23,9 @@ namespace EsportProject.Controllers.TurnamentControllers
         {
             await _context.Team.ToListAsync();
             await _context.Turnament.ToListAsync();
-            return View(await _context.TeamStanding.ToListAsync());
+            IEnumerable<TeamStanding> tsList = await _context.TeamStanding.ToListAsync();
+            IEnumerable<TeamStanding> sortedList = tsList.OrderBy(t => t.Turnament.Name);
+            return View(sortedList);
         }
 
         // GET: TeamStandings/Details/5

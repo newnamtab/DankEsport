@@ -22,12 +22,15 @@
     <Content Include="wwwroot\images\background.jpg" />
     <Content Include="wwwroot\images\DANKRANK.png" />
     <Content Include="wwwroot\images\dropdownicon.png" />
-    <Content Include="wwwroot\images\fbicon.png" />
-    <Content Include="wwwroot\images\logo.png" />
     <Content Include="wwwroot\images\navicon.png" />
+    <Content Include="wwwroot\images\newsadminpanel.png" />
     <Content Include="wwwroot\images\Placehold.jpg" />
     <Content Include="wwwroot\images\PLACEHOLDER.jpg" />
     <Content Include="wwwroot\images\Placeholder.png" />
+    <Content Include="wwwroot\images\roleadminpanel.png" />
+    <Content Include="wwwroot\images\teamsadminpanel.png" />
+    <Content Include="wwwroot\images\tournamentadminpanel.png" />
+    <Content Include="wwwroot\images\useradminpanel.png" />
     <Content Include="wwwroot\lib\favicon.ico" />
   </ItemGroup>
   <ItemGroup>

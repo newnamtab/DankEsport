@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using EsportProject.Models;
 
 namespace EsportProject.Controllers
-{
+{   [AutoValidateAntiforgeryToken]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager; //Dette er til at opdatere DB
@@ -18,7 +18,6 @@ namespace EsportProject.Controllers
         {
             _userManager = userManager;
             _signInManager = signInManager;
-
         }
         [HttpGet]
         public IActionResult Login()

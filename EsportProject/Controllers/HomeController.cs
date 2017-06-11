@@ -37,12 +37,12 @@ namespace EsportProject.Controllers
         }
 
 
-        public IActionResult Teams()
+        public async Task<IActionResult> Teams()
         {
             _logger.LogInformation("Team page logged");
-            return View();
+            List<Team> TeamList = await _Tourcontext.Team.ToListAsync();
+            return View(TeamList);
         }
-        //[HttpPost]
         public async Task<IActionResult> Tournaments(int? id)
         {
             await _Tourcontext.Team.ToListAsync();
@@ -74,12 +74,22 @@ namespace EsportProject.Controllers
 
         public IActionResult News()
         {
-            IEnumerable<News> model = _context.News.ToList() as IEnumerable<News>;
-            _logger.LogInformation("News page logged");
+            IEnumerable<News> model;
+            try
+            {
+                model = _context.News.OrderByDescending(d => d.CreateDate).ToList() as IEnumerable<News>;
+                _logger.LogInformation("News page logged");
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("error in getting news from DB",e);
+                return RedirectToAction("Error");
+            }
             return View(model);
         }
         public async Task<IActionResult> SpecificNews(int? id)
         {
+            _logger.LogInformation("SpecificNews page logged, id of news: " + id);
             if (id == null)
             {
                 return RedirectToAction("News", "Home");
@@ -100,7 +110,6 @@ namespace EsportProject.Controllers
 
             Models.EmailContact tempCon = new Models.EmailContact();
 
-
             return View(tempCon);
         }
         [Authorize]
@@ -108,8 +117,7 @@ namespace EsportProject.Controllers
         public async Task<IActionResult> Contact(Models.EmailContact contact)
         {
             Models.EmailContact tempCon = new Models.EmailContact();
-
-
+            
             //From Address
             string FromAddress = "mail@newnamtab.dk";
             string FromAdressTitle = "Dank E-Sport";
@@ -153,6 +161,7 @@ namespace EsportProject.Controllers
             await _conContext.SaveChangesAsync();
             ModelState.Clear();
 
+            _logger.LogInformation("User send request with mail " + FromAddress);
             return View(tempCon);
         }
 
@@ -160,6 +169,11 @@ namespace EsportProject.Controllers
         {
             _logger.LogInformation("Error page logged");
             _logger.LogError("Error paged reached");
+            return View();
+        }
+        public IActionResult NotFound()
+        {
+            _logger.LogError("404 page reached");
             return View();
         }
     }

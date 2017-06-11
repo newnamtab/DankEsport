@@ -7,19 +7,7 @@
 <center>
     <h1>Tournaments</h1>
 </center>
-<form asp-controller="Home" asp-action="Tournaments" method="get">
-    <div class="form-horizontal">
-        <div class="form-group">
-            <select name ="id" class="form-control" title="Choose Tournament" onchange="this.form.submit();">
-                <option value="" disabled selected hidden>Choose Tournament</option>
-                @foreach (EsportProject.Models.DBmodels.Turnament tur in Model.TournamentList)
-                {
-                    <option value="@tur.TurnamentID">@tur.Name</option>
-                }
-            </select>
-        </div>
-    </div>
-</form>
+
 <div class="row">
     <div class="col-md-1">
     </div>
@@ -27,6 +15,21 @@
         <table id="fronttable" class="table-responsive table-striped">
             <tr>
                 <th>@Model.tournament.Name</th>
+                <th>
+                    <form asp-controller="Home" asp-action="Tournaments" method="get">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <select name="id" class="form-control" title="Choose Tournament" onchange="this.form.submit();">
+                                    <option value="" disabled selected hidden>Choose Tournament</option>
+                                    @foreach (EsportProject.Models.DBmodels.Turnament tur in Model.TournamentList)
+                                    {
+                                        <option value="@tur.TurnamentID">@tur.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </th>
             </tr>
             <tr>
                 <th>Team:</th>
@@ -49,26 +52,26 @@
     </div>
 </div>
 @*<div class="row">
-    <div class="col-md-4">
-        <h4>Choose tournament:</h4>
-        <select>
-            <option value="Counterstrike">Counterstrike</option>
-            <option value="Leagueoflegends">League of Legends</option>
-            <option value="Overwatch">Overwatch</option>
-            <option value="Dota2">Dota 2</option>
-        </select>
-        <br />
-        <div>
-            <img src="~/images/Placehold.jpg" class="img-responsive" />
-        </div>
-        <div>
-            <img src="~/images/Placehold.jpg" class="img-responsive" />
-        </div>
-
-    </div>
-    <div class="col-md-8">
-        <div>
+        <div class="col-md-4">
+            <h4>Choose tournament:</h4>
+            <select>
+                <option value="Counterstrike">Counterstrike</option>
+                <option value="Leagueoflegends">League of Legends</option>
+                <option value="Overwatch">Overwatch</option>
+                <option value="Dota2">Dota 2</option>
+            </select>
+            <br />
+            <div>
+                <img src="~/images/Placehold.jpg" class="img-responsive" />
+            </div>
+            <div>
+                <img src="~/images/Placehold.jpg" class="img-responsive" />
+            </div>
 
         </div>
-    </div>
-</div>*@
+        <div class="col-md-8">
+            <div>
+
+            </div>
+        </div>
+    </div>*@

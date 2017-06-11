@@ -37,6 +37,13 @@
         display: none;
         height: 0;
     }
+    #loggedinuser {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+        font-size: large;
+        position: absolute;
+        padding-left:50px;
+        padding-top:10px;
+    }
 }
 /* nedenstående kun gældende på mobil*/
 @media screen and (max-width: 480px) {
@@ -45,7 +52,7 @@
         height: 40px;
         width: 100%;
         background: url(../images/dropdownicon.png) no-repeat 98% center;
-        background-color: #336350;
+        background-color: #021533;
         cursor: pointer;
     }
 
@@ -81,6 +88,10 @@
 
     #desknavlogo {
         display: none;
+    }
+    #loggedinuser {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+        font-size: medium;
     }
 
     #mobilenavlogo {

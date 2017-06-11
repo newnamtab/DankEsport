@@ -61,7 +61,6 @@ namespace EsportProject
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             // IMPORTANT: This session call MUST go before UseMvc()
-            //app.UseSession();
             //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             //loggerFactory.AddDebug();
             //Overstående fjernes grundet NLog
@@ -76,7 +75,8 @@ namespace EsportProject
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            app.UseIdentity();
+            app.UseStatusCodePagesWithRedirects("/Home/NotFound");
+            app.UseIdentity(); 
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

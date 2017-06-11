@@ -10,15 +10,15 @@
                     <div asp-validation-summary="All"></div>
                     <h3>Sign up for Dank Esports</h3>
                     <div>
-                        <input id="regtext" asp-for="Email" placeholder="Email" />
+                        <input name="email" id="regtext" asp-for="Email" placeholder="Email" />
                         <span asp-validation-for="Email"></span>
                     </div>
                     <div>
-                        <input id="regtext" asp-for="Password" placeholder="Password" />
+                        <input name="password" id="regtext" asp-for="Password" placeholder="Password" />
                         <span asp-validation-for="Password"></span>
                     </div>
                     <div>
-                        <input id="regtext" asp-for="ConfirmPassword" placeholder="Confirm Password" />
+                        <input name="confirmpassword" id="regtext" asp-for="ConfirmPassword" placeholder="Confirm Password" />
                         <span asp-validation-for="ConfirmPassword"></span>
                     </div>
                     <div>
