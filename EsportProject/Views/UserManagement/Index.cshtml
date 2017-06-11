@@ -1,7 +1,5 @@
-﻿@using Microsoft.AspNetCore.Identity;
-@using EsportProject.Models;
-@model UserManagement
-@inject UserManager<ApplicationUser> userManager
+﻿@model EsportProject.Models.UserManagement
+@inject Microsoft.AspNetCore.Identity.UserManager<EsportProject.Models.ApplicationUser> userManager
 
 <table>
     <thead>
@@ -16,9 +14,30 @@
         {
             <tr>
                 <td>@user.Email</td>
-                <td> <select asp-for="NewRole" asp-items="@Model.Rolelist"></select> </td>
+                <td>
+
+                    <select asp-for="NewRole">
+                        
+                    @foreach (var allrole in Model.Rolelist)
+                    {
+                        if (allrole.Selected == true)
+                        {
+                        <option class="optionActive" >@allrole.Text</option>
+                        }
+                        else
+                        {
+
+                        <option class="optionDisabled">@allrole.Text</option>
+                        }
+                    }
+                </select>
+
+                </td>
+
                 <td><a asp-controller="UserManagement" asp-action="AddRole" asp-route-id="@Model">Add Role</a></td>
+
                 <td><a asp-controller="UserManagement" asp-action="RemoveRole" asp-route-id="@user.Id">Remove Role</a></td>
+
             </tr>
         }
 

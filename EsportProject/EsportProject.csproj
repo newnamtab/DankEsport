@@ -18,6 +18,7 @@
     <Content Include="wwwroot\css\Register.css" />
     <Content Include="wwwroot\css\SpecificNews.css" />
     <Content Include="wwwroot\css\tournamentstyle.css" />
+    <Content Include="wwwroot\css\UserManagement.css" />
     <Content Include="wwwroot\images\background.jpg" />
     <Content Include="wwwroot\images\DANKRANK.png" />
     <Content Include="wwwroot\images\dropdownicon.png" />

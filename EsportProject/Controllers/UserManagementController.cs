@@ -31,9 +31,11 @@ namespace EsportProject.Controllers
         {
             var vm = new UserManagement
             {
-                Users = _dbContext.Users.OrderBy(u => u.Email).Include(u => u.Roles).ToList() 
+                Users = _dbContext.Users.OrderBy(u => u.Email).Include(u => u.Roles).ToList()
             };
-            vm.Rolelist = GetAllRoles();
+
+            vm.Rolelist = GetUserAllRoles();
+
             return View(vm);
         }
         [HttpGet]
@@ -46,6 +48,7 @@ namespace EsportProject.Controllers
                 UserID = id,
                 Email = user.Email
             };
+
             return View(vm);
         }
         [HttpPost]
@@ -67,7 +70,7 @@ namespace EsportProject.Controllers
             }
             UM.Rolelist = GetAllRoles(); // Hvis modelstate ikke er valid, så får vi stadig rollen i dropdown. 
             UM.Email = ARuser.Email; // Hvis modelstate ikke er valid, så får vi stadig Emailen ud i view, så man ved hvem der arbejdes på. 
-            return View(UM); 
+            return View(UM);
 
         }
 
@@ -81,6 +84,7 @@ namespace EsportProject.Controllers
                 UserID = id,
                 Email = user.Email
             };
+
             return View(vm);
 
         }
@@ -93,7 +97,7 @@ namespace EsportProject.Controllers
             if (ModelState.IsValid)
             {
                 //var result = await _userManager.AddToRoleAsync(ARuser, UM.NewRole);
-                var result = await _userManager.RemoveFromRoleAsync(ARuser,UM.NewRole);
+                var result = await _userManager.RemoveFromRoleAsync(ARuser, UM.NewRole);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index");
@@ -115,17 +119,53 @@ namespace EsportProject.Controllers
         }
         private SelectList GetAllRoles() => new SelectList(_roleManager.Roles.OrderBy(r => r.Name));
 
-      
-       private async Task<SelectList> getUserRoles(string id)
-        {
-          var tempuser = _userManager.FindByIdAsync(id);
-          ApplicationUser user = await tempuser;
 
-          var temproles =  _userManager.GetRolesAsync(user);
-          IList<string> roles = await temproles;
-          
-          return new SelectList(roles);
+        private async Task<SelectList> getUserRoles(string id)
+        {
+            var tempuser = _userManager.FindByIdAsync(id);
+            ApplicationUser user = await tempuser;
+
+
+            //var temproles = _userManager.GetRolesAsync(user);
+            //IList<string> roles = await temproles;
+
+            return new SelectList(user.Roles);
 
         }
+        private MultiSelectList GetUserAllRoles()
+        {
+            List<SelectListItem> itemList = new List<SelectListItem>();
+            var allroles = _roleManager.Roles;
+            var tempusers = _userManager.Users;
+            foreach (var user in tempusers)
+            {
+                foreach (var role in user.Roles)
+                {
+                    foreach (var allrole in allroles)
+                    {
+                        if (allrole.Id.ToString() == role.RoleId.ToString())
+                        {
+                            SelectListItem returnrole = new SelectListItem();
+                            returnrole.Selected = true;
+                            returnrole.Text = allrole.Name;
+                            itemList.Add(returnrole);
+                        }
+                        else
+                        {
+                            SelectListItem returnrole = new SelectListItem();
+                            returnrole.Selected = false;
+                            returnrole.Text = allrole.Name;
+                            itemList.Add(returnrole);
+                        }
+                    }
+                }
+
+
+            }
+
+            return new MultiSelectList(itemList);
+        }
+
+
     }
 }
