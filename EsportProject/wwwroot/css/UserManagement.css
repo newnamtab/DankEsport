@@ -1,11 +1,11 @@
 ﻿/*Select #NewRole {
     color: blue;
 }*/
-select.optionActive {
+optionActive {
     color: green;
-    
+    font-weight: bold;
 }
 
-select.optionDisabled {
+.optionDisabled {
     color: red;
 }
