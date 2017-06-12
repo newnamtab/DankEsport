@@ -13,7 +13,8 @@ using Microsoft.EntityFrameworkCore;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace EsportProject.Controllers
-{   [AutoValidateAntiforgeryToken]
+{
+    [AutoValidateAntiforgeryToken]
     public class UserManagementController : Controller
     {
         private readonly UserContext _dbContext;
@@ -34,8 +35,8 @@ namespace EsportProject.Controllers
                 Users = _dbContext.Users.OrderBy(u => u.Email).Include(u => u.Roles).ToList()
             };
 
-            vm.Rolelist = GetUserAllRoles();
-
+            vm.Rolelist = GetAllRoles();
+            vm.TestRoleList = getAllTheRoles();
             return View(vm);
         }
         [HttpGet]
@@ -132,9 +133,9 @@ namespace EsportProject.Controllers
             return new SelectList(user.Roles);
 
         }
-        private MultiSelectList GetUserAllRoles()
+        private List<RoleListModel> GetUserAllRoles()
         {
-            List<SelectListItem> itemList = new List<SelectListItem>();
+            List<RoleListModel> itemList = new List<RoleListModel>();
             var allroles = _roleManager.Roles;
             var tempusers = _userManager.Users;
             foreach (var user in tempusers)
@@ -143,28 +144,42 @@ namespace EsportProject.Controllers
                 {
                     foreach (var allrole in allroles)
                     {
-                        if (allrole.Id.ToString() == role.RoleId.ToString())
+                        if (allrole.Id == role.RoleId)
                         {
-                            SelectListItem returnrole = new SelectListItem();
-                            returnrole.Selected = true;
-                            returnrole.Text = allrole.Name;
+                            RoleListModel returnrole = new RoleListModel();
+                            returnrole.Set = true;
+                            returnrole.Name = allrole.Name;
                             itemList.Add(returnrole);
                         }
                         else
                         {
-                            SelectListItem returnrole = new SelectListItem();
-                            returnrole.Selected = false;
-                            returnrole.Text = allrole.Name;
+                            RoleListModel returnrole = new RoleListModel();
+                            returnrole.Set = false;
+                            returnrole.Name = allrole.Name;
                             itemList.Add(returnrole);
                         }
                     }
                 }
 
-
             }
 
-            return new MultiSelectList(itemList);
+            return itemList;
         }
+
+        private List<RoleListModel> getAllTheRoles() {
+            List<RoleListModel> returnlist = new List<RoleListModel>();
+
+            foreach (var role in _roleManager.Roles)
+            {
+                RoleListModel modelrole = new RoleListModel();
+                modelrole.id = role.Id;
+                modelrole.Name = role.Name;
+                returnlist.Add(modelrole);
+            }
+            return returnlist;
+        }
+
+        
 
 
     }

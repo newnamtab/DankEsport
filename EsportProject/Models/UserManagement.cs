@@ -13,7 +13,9 @@ namespace EsportProject.Models
 
         public string UserID { get; set; }
         public string NewRole { get; set; }
-        public MultiSelectList Rolelist { get; set; }
+        public SelectList Rolelist { get; set; }
+
+        public List<RoleListModel> TestRoleList { get; set; }
         public string Email { get; set; }
     }
 }
